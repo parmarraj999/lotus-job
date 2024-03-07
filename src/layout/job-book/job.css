@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.job-container {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    z-index: 100;
+    background: white;
+    display: grid;
+    grid-template-columns: 2.6fr 9.4fr;
+    gap: 1.2rem;
+    font-family: "Roboto", sans-serif;
+}
+
+.nav {
+    width: 100%;
+    height: 100%;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    padding: .8rem 1rem;
+}
+
+.back-btn {
+    width: 100%;
+    padding: 1.2rem .8rem;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+}
+
+.menu-container {
+    width: 100%;
+    height: 90%;
+    /* background: red; */
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.menu-container ul {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.menu-container ul .menu-item {
+    width: 100%;
+    padding: 1.2rem 1.2rem;
+    font-size: 18px;
+    font-weight: bolder;
+    text-decoration: none;
+    color: grey;
+    background: rgba(0, 0, 0, 0.1);
+    list-style: none;
+    border-radius: 10px;
+    display: flex;
+    gap: 1.2rem;
+    justify-content: space-between;
+}
+
+.menu-container ul .menu-item:hover {
+    color: black;
+}
+
+.main-container {
+    display: grid;
+    grid-template-rows: 1fr 11fr;
+}
+
+.header-main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-container .role-container {
+    /* border: 1px solid red; */
+    height: 90vh;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 0;
+    gap: 5rem;
+}
+
+.job-card {
+    width: 50%;
+    min-height: 500px;
+    border: 1px solid red;
+}
+
+.mobile-job-nav {
+    position: absolute;
+    top: 1%;
+    left: 3%;
+    display: flex;
+    gap: .8rem;
+    display: none;
+    width: 95%;
+    align-items: center;
+    justify-content: space-between;
+}
+.mobile-job-nav-menu{
+    background: white;
+    position: absolute;
+    left: 0%;
+    height: 80vh;
+    width: 100%;
+    padding: .8rem;
+    margin-top: 1rem;
+}
+@media screen and (max-width:765px) {
+    .job-container {
+        grid-template-columns: 0 12fr;
+        gap: 0;
+    }
+
+    .nav {
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .mobile-job-nav {
+        display: flex;
+    }
+
+    .job-card {
+        width: 85%;
+
+    }
+}
+.gtc120{
+    grid-template-columns: "12fr 0fr";
+}

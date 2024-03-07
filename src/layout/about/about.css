@@ -1,0 +1,96 @@
+.about_container {
+  width: 95%;
+  height: 88vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  font-family: sans-serif;
+  padding: 1.5rem 0;
+}
+.about_container .box_one {
+  padding: 2rem 3rem;
+  border-radius: 3rem;
+  background: rgba(217, 217, 217, 0.3137254902);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.about_container .box_one h1 {
+  font-size: 4ew;
+}
+.about_container .box_one h1 span {
+  color: #eab63e;
+}
+.about_container .box_one p {
+  color: #919191;
+  font-size: 18px;
+  font-weight: 600;
+}
+.about_container .box_one .button {
+  width: 230px;
+}
+.about_container .headings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+.about_container .headings h2 {
+  font-size: 2.3vw;
+  color: rgba(0, 0, 0, 0.3764705882);
+}
+.about_container .headings P {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.3764705882);
+}
+.about_container .about_card_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+}
+.about_container .about_card_container .about_card {
+  height: 100%;
+  padding: 2rem 1.8rem;
+  border-radius: 2rem;
+  background: rgba(217, 217, 217, 0.5019607843);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.about_container .about_card_container .about_card h3 {
+  font-size: 1.2vw;
+  color: #eab63e;
+}
+.about_container .about_card_container .about_card p {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.3764705882);
+  width: 300px;
+}
+
+@media screen and (max-width: 765px) {
+  .about_container {
+    height: auto;
+  }
+  .about_container .box_one {
+    padding: 20px 15px;
+    border-radius: 1.5rem;
+  }
+  .about_container .headings {
+    align-items: flex-start;
+  }
+  .about_container .headings h2 {
+    font-size: 32px;
+    color: black;
+    border-bottom: 3px solid black;
+  }
+  .about_container .about_card_container {
+    flex-direction: column;
+  }
+  .about_container .about_card_container .about_card h3 {
+    font-size: 24px;
+  }
+}/*# sourceMappingURL=about.css.map */

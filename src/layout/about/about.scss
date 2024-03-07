@@ -1,0 +1,98 @@
+.about_container{
+    width: 95%;
+    height: 88vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    font-family: sans-serif;
+    padding: 1.5rem 0;
+    .box_one{
+        padding: 2rem 3rem;
+        border-radius: 3rem ;
+        background: #d9d9d950;
+        display: flex;
+        flex-direction: column;
+        gap: .8rem;
+        h1{
+            font-size: 4ew;
+            span{
+                color: #eab63e;
+            }
+        }
+        p{
+            color: #919191;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .button{
+            width: 230px;
+        }
+    }
+    .headings{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap:.8rem;
+        h2{
+            font-size: 2.3vw;
+            color: #00000060;
+        }
+        P{
+            font-size: 18px;
+            font-weight: 600;
+            color: #00000060;
+
+        }
+    }
+    .about_card_container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.2rem;
+        .about_card{
+            height: 100%;
+            padding: 2rem 1.8rem;
+            border-radius: 2rem;
+            background: #d9d9d980;
+            display: flex;
+            flex-direction: column;
+            gap: .8rem;
+            h3{
+                font-size: 1.2vw;
+                color: #eab63e;
+            }
+            p{
+                font-size: 18px;
+                font-weight: 600;
+                color: #00000060;
+                width: 300px;
+            }
+        }
+    }
+}
+@media screen and (max-width:765px) {
+    .about_container{
+        height: auto;
+        .box_one{
+            padding: 20px 15px;
+            border-radius: 1.5rem;
+        }
+        .headings{
+            align-items: flex-start;
+            h2{
+                font-size: 32px;
+                color: black;
+                border-bottom: 3px solid black;
+            }
+        }
+        .about_card_container{
+            flex-direction: column;
+            .about_card{
+                h3{
+                    font-size: 24px;
+                }
+            }
+        }
+    }
+}

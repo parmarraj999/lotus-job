@@ -1,0 +1,52 @@
+.dashboard-container {
+  position: absolute;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100vh;
+  background: rgb(233, 233, 233);
+}
+.dashboard-container .auth-popup {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dashboard-container .auth-popup .pop-card {
+  width: 30%;
+  padding: 1.4rem 2rem;
+  border-radius: 1.2rem;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.8rem;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.2);
+}
+.dashboard-container .auth-popup .pop-card input {
+  width: 90%;
+  height: 56px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 0 1rem;
+  font-size: 18px;
+  background: transparent;
+}
+.dashboard-container .auth-popup .pop-card button {
+  width: 180px;
+  height: 46px;
+  background: black;
+  color: white;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2rem;
+}
+.dashboard-container .auth-popup .pop-card p {
+  font-size: 14px;
+  color: red;
+  font-weight: bold;
+}/*# sourceMappingURL=dashboard.css.map */

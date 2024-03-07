@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.active {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  list-style: none;
+  background: rgba(73, 73, 73, 0.5215686275);
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 765px) {
+  .active {
+    border-radius: 0;
+  }
+}

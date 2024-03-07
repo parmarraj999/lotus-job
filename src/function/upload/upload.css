@@ -1,0 +1,101 @@
+.upload_form_container {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.6);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.upload_form_container .upload_form {
+  width: 40%;
+  height: auto;
+  padding: 2rem 0;
+  background: #ffffff;
+  border-radius: 2.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.upload_form_container .upload_form h2 {
+  color: #dfab33;
+}
+.upload_form_container .upload_form h3 {
+  color: #808080;
+}
+.upload_form_container .upload_form p {
+  font-size: 18px;
+  font-weight: 600;
+  color: #dfab33;
+}
+.upload_form_container .upload_form .file_input {
+  border: 2px solid grey;
+  background: transparent;
+  width: 70%;
+  border-radius: 3rem;
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+}
+.upload_form_container .upload_form .file_input::-webkit-file-upload-button {
+  display: none;
+}
+.upload_form_container .upload_form .file_input::before {
+  content: "click / drag & drop images";
+  font-weight: 600;
+  color: grey;
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.upload_form_container .upload_form .title_input {
+  width: 70%;
+  padding: 0.8rem 1.2rem;
+  border: 1px solid black;
+  border-radius: 15px;
+  color: black;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.upload_form_container .upload_form .checkbox {
+  display: flex;
+  gap: 0.8rem;
+}
+.upload_form_container .upload_form .checkbox button {
+  width: auto;
+  padding: 0.6rem 0.8rem;
+  font-size: 16px;
+  color: rgb(74, 74, 74);
+  background: rgba(0, 0, 0, 0.2);
+}
+.upload_form_container .upload_form button {
+  width: 150px;
+  padding: 0.8rem 0;
+  background: black;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+}
+
+@media screen and (max-width: 786px) {
+  .upload_form_container .upload_form {
+    width: 96%;
+  }
+  .upload_form_container .upload_form .file_input {
+    width: 85%;
+  }
+}/*# sourceMappingURL=upload.css.map */
