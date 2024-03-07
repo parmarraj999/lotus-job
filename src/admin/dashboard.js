@@ -3,6 +3,12 @@ import "./dashboard.css"
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import RecentJob from './recent-job/RecentJob';
+import AddJob from '../component/AddJob';
+import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
+import Upload from '../function/upload/upload';
+import RecentPhoto from './recent-photo/recentPhoto';
+
 
 function Dashboard() {
 
@@ -15,7 +21,9 @@ function Dashboard() {
   const [password, setPassword] = useState();
   const [error, setError] = useState()
 
-  const [hidePop, setHidePop] = useState(true);
+  const [hidePop, setHidePop] = useState(false);//set true before host
+  const [showAddJobForm, setShowAddJobForm] = useState(false);
+  const [showForm, setShowForm] = useState(false);
 
   const handleUsername = (e) => {
     setUsername(e.target.value)
@@ -54,11 +62,34 @@ function Dashboard() {
       }
       <div className='dashboard-header' >
         <h2>lotus dashboard</h2>
-        <Link to='/' className='exit-btn'>
-          <FontAwesomeIcon icon={faRightFromBracket}/>
+        <Link to='' className='exit-btn' onClick={() => setHidePop(true)}>
+          <FontAwesomeIcon icon={faRightFromBracket} />
         </Link>
       </div>
-
+      <div className='dashboard-main' >
+        <div className='applied-list' ></div>
+        <div className='post-job-container' >
+          <div>
+            <button className='add-job-btn' onClick={() => setShowAddJobForm(true)} >Add Job</button>
+          </div>
+          <RecentJob />
+        </div>
+        <div className='photo-upload-container'>
+          <div className='header-photos' >
+            <button className='add-button'>
+              <FontAwesomeIcon icon={faPlus} onClick={()=>setShowForm(true)}/>
+            </button>
+          </div>
+            <RecentPhoto/>
+        </div>
+      </div>
+      {
+        showAddJobForm ? <AddJob setShowAddJobForm={setShowAddJobForm} /> : ""
+      }
+      {
+        showForm ?
+          <Upload setShowForm={setShowForm} /> : ""
+      }
     </div>
   )
 }

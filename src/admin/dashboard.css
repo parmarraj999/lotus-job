@@ -5,6 +5,10 @@
   width: 100%;
   height: 100vh;
   background: rgb(233, 233, 233);
+  padding: 1.2rem;
+  display: grid;
+  grid-template-rows: 1fr 11fr;
+  gap: 0.8rem;
 }
 .dashboard-container .auth-popup {
   width: 100%;
@@ -49,4 +53,122 @@
   font-size: 14px;
   color: red;
   font-weight: bold;
+}
+.dashboard-container .dashboard-header {
+  background: white;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.2rem;
+  border-radius: 1rem;
+}
+.dashboard-container .dashboard-header .exit-btn {
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: black;
+  border-radius: 10px;
+}
+.dashboard-container .dashboard-header h2 {
+  text-transform: capitalize;
+  font-size: 28px;
+}
+.dashboard-container .dashboard-main {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+.dashboard-container .dashboard-main .applied-list {
+  width: 100%;
+  border-radius: 1rem;
+  background: white;
+}
+.dashboard-container .dashboard-main .post-job-container {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  border-radius: 1rem;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: center;
+}
+.dashboard-container .dashboard-main .post-job-container .add-job-btn {
+  width: 180px;
+  height: 50px;
+  color: white;
+  background-color: rgb(29, 116, 255);
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 10px;
+}
+.dashboard-container .dashboard-main .photo-upload-container {
+  width: 80%;
+  padding: 1rem 1.2rem;
+  border-radius: 1rem;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: center;
+}
+.dashboard-container .dashboard-main .photo-upload-container .header-photos .add-button {
+  width: 60px;
+  height: 60px;
+  background-color: rgb(29, 116, 255);
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+
+.recent-job-container {
+  width: 100%;
+  height: 100%;
+  border: 1px solid red;
+}
+
+.recent-photo-container {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+.recent-photo-container::-webkit-scrollbar {
+  display: none;
+}
+.recent-photo-container .photo-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 100%;
+  height: auto;
+}
+.recent-photo-container .photo-container .photo-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 0.8rem;
+  border-radius: 10px;
+  border: 1px solid grey;
+  gap: 1rem;
+}
+.recent-photo-container .photo-container .photo-card img {
+  width: 60px;
+  border-radius: 5px;
+}
+.recent-photo-container .photo-container .photo-card h1 {
+  font-size: 18px;
+  width: 100%;
+  overflow: hidden;
+}
+.recent-photo-container .photo-container .photo-card .utility-btn {
+  font-size: 24px;
+  color: red;
 }/*# sourceMappingURL=dashboard.css.map */

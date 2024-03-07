@@ -5,6 +5,10 @@
     width: 100%;
     height: 100vh;
     background:rgb(233, 233, 233);
+    padding: 1.2rem;
+    display: grid;
+    grid-template-rows: 1fr 11fr;
+    gap: .8rem;
     .auth-popup{
         width: 100%;
         height: 100vh;
@@ -50,5 +54,125 @@
             }
         }
     }
+    .dashboard-header{
+        background: white;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: .9rem 1.2rem;
+        border-radius: 1rem;
+        .exit-btn{
+            width: 50px;
+            height: 50px;
+            background: rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: black;
+            border-radius: 10px;
+        }
+        h2{
+            text-transform: capitalize;
+            font-size: 28px;
+        }
+    }
+    .dashboard-main{
+        width: 100%;
+        display: flex;
+        gap: 1rem;
+        .applied-list{
+            width: 100%;
+            border-radius: 1rem;
+            background: white;
+        }
+        .post-job-container{
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border-radius: 1rem;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            align-items: center;
+            .add-job-btn{
+                width: 180px;
+                height: 50px;
+                color: white;
+                background-color: rgb(29, 116, 255);
+                border: none;
+                font-size: 18px;
+                font-weight: 600;
+                border-radius: 10px;
+            }
+        }
+        .photo-upload-container{
+            width: 80%;
+            padding: 1rem 1.2rem;
+            border-radius: 1rem;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            align-items: center;
+            .header-photos{
+                .add-button{
+                    width: 60px;
+                    height: 60px;
+                    background-color: rgb(29, 116, 255);
+                    font-size: 24px;
+                    font-weight: 600;
+                    color:white;
+                    border: none;
+                    border-radius: 10px;
+                }
+            }
+        }
+    }
     
+}
+
+// ---------- recent job section -------- 
+.recent-job-container{
+    width: 100%;
+    height: 100%;
+    border: 1px solid red;
+}
+.recent-photo-container{
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    &::-webkit-scrollbar{
+        display: none;
+    }
+    .photo-container{
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        width: 100%;
+        height: auto;
+        .photo-card{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: .5em .8rem;
+            border-radius: 10px;
+            border: 1px solid grey;
+            gap: 1rem;
+            img{
+                width: 60px;
+                border-radius: 5px;
+            }
+            h1{
+                font-size: 18px;
+                width: 100%;
+                overflow: hidden;
+            }
+            .utility-btn{
+                font-size: 24px;
+                color: red;
+            }
+        }
+    }
 }
