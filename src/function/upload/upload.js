@@ -1,4 +1,4 @@
-import { getStorage, ref, uploadBytes, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { doc, setDoc, collection, addDoc } from 'firebase/firestore'
 import React, { useState } from 'react';
 import "./upload.css"

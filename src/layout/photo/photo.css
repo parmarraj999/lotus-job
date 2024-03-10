@@ -3,7 +3,7 @@
   height: 90vh;
   overflow: scroll;
   display: flex;
-  padding-top: 1rem;
+  padding: 1rem 1.2rem;
 }
 .photo_container::-webkit-scrollbar {
   display: none;

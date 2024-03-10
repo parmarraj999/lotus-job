@@ -3,7 +3,9 @@ import "./forms.css"
 
 function Apply() {
   return (
-    <div>Apply</div>
+    <div className='form' >
+      <div className='form-card' ></div>
+    </div>
   )
 }
 

@@ -4,15 +4,13 @@ import { getStorage } from "firebase/storage";
 import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAtPjagagY6WK0UiocGfwSTWRffBuZ8o30",
-  authDomain: "jobconsultancy-2cdc1.firebaseapp.com",
-  projectId: "jobconsultancy-2cdc1",
-  storageBucket: "jobconsultancy-2cdc1.appspot.com",
-  messagingSenderId: "1026848075954",
-  appId: "1:1026848075954:web:f1f975ca4df123179299ab"
+  apiKey: "AIzaSyCmFEd7N5WJsBnu36gJvRDNt9eYGE95sWs",
+  authDomain: "lotusjobs-902dd.firebaseapp.com",
+  projectId: "lotusjobs-902dd",
+  storageBucket: "lotusjobs-902dd.appspot.com",
+  messagingSenderId: "957544285154",
+  appId: "1:957544285154:web:a64d29477c2063377cefbb"
 };
-
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const storage = getStorage();

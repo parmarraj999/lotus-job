@@ -1,11 +1,16 @@
 import React, { useState } from 'react'
 import "./forms.css"
+import { db, storage } from "../firebase/firebaseConfig"
+import { addDoc, collection } from "firebase/firestore";
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 
 function AddJob(props) {
 
-    const [jobTitle,setJobTitle] = useState();
-    const [description,setDescription] = useState();
-    const [file,setFile] = useState();
+    const [jobTitle, setJobTitle] = useState();
+    const [description, setDescription] = useState();
+    const [file, setFile] = useState();
+    const [currentRole, setCurrentRole] = useState();
+    const [url, setUrl] = useState();
 
     const handleTitle = (e) => {
         setJobTitle(e.target.value)
@@ -13,17 +18,47 @@ function AddJob(props) {
     const handleDescription = (e) => {
         setDescription(e.target.value)
     }
-    const handleFile = (e)=>{
+    const handleFile = (e) => {
         setFile(e.target.files[0])
     }
-
-    const data = {
-        title : jobTitle,
-        description : description,
-        file : file
+    const handleRole = (e) => {
+        setCurrentRole(e.target.value);
     }
 
-    console.log(data)
+
+    const data = {
+        title: jobTitle,
+        description: description,
+        file: url
+    }
+
+    // console.log(data)
+    const handleAdd = async (e) => {
+        // e.preventDefault();
+        const storageRef = ref(storage, `/job-role/${file.name}`)
+        const uploadTask = uploadBytesResumable(storageRef, file)
+        uploadTask.on("state_changed",
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref).then(async (url) => {
+              console.log("url", url)
+              setUrl(url)
+              if (url !== null) {
+                const collectionRef = collection(db, `${currentRole}`)
+                await addDoc(collectionRef, { imgUrl: url, title: jobTitle,description:description })
+                const allJobRef = collection(db,"All-Jobs-Data")
+                await addDoc(allJobRef, { imgUrl: url, title: jobTitle,description:description ,field:currentRole })
+                console.log("added to database")
+                setTimeout(() => {
+                  console.log('successfull')
+                }, 3000);
+              }
+            })
+          },
+          setTimeout(() => {
+            props.setShowAddJobForm(false)
+          }, 3000)
+            )
+      }
 
     const handleCancel = () => {
         props.setShowAddJobForm(false)
@@ -36,12 +71,22 @@ function AddJob(props) {
                     <h2>Add Jobs</h2>
                 </div>
                 <div className='form-inputs' >
-                    <input type='text' placeholder='Job Title' onChange={handleTitle}/>
+                    <input type='text' placeholder='Job Title' onChange={handleTitle} />
                     <input type='' placeholder='Job Description' onChange={handleDescription} />
-                    <input type='file' onChange={handleFile}/>
+                    <input type='file' onChange={handleFile} />
+                    <div className='field-selecter'>
+                        <h4>Choose Field</h4>
+                        <select onChange={handleRole}>
+                            <option value="Front-Office-Work">Front Office Work</option>
+                            <option value="Back-Office-Work">Back Office Work</option>
+                            <option value="Banking Sector">banking Sector</option>
+                            <option value="Medical">Medical</option>
+                            <option value="Marketing Fields"> Marketing</option>
+                        </select>
+                    </div>
                 </div>
-                <div style={{display:"flex",gap:"1.2rem"}}>
-                    <button className='add-job-btn' >Add</button>
+                <div style={{ display: "flex", gap: "1.2rem" }}>
+                    <button className='add-job-btn' onClick={handleAdd} >Add</button>
                     <button className='cancel-btn' onClick={handleCancel} >Cancel</button>
                 </div>
             </div>

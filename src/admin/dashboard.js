@@ -42,8 +42,6 @@ function Dashboard() {
     }
   }
 
-  console.log(username, password)
-
   return (
     <div className='dashboard-container' >
       {/* ----- pop up -----  */}
