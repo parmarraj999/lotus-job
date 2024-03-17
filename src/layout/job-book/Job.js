@@ -2,13 +2,11 @@ import React, { useState, useEffect } from 'react'
 import './job.css';
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft, faArrowRight, faBars } from '@fortawesome/fontawesome-free-solid'
+import { faArrowLeft, faArrowRight, faBars, faHeart } from '@fortawesome/fontawesome-free-solid'
 import { faClose } from '@fortawesome/free-solid-svg-icons'
 import { collection, deleteDoc, doc, getDocs, query, where } from 'firebase/firestore'
 import { db } from '../../firebase/firebaseConfig'
 import { faShare } from "@fortawesome/fontawesome-free-solid";
-import { faHeart } from '@fortawesome/fontawesome-free-solid';
-
 
 function Job() {
   const [role, setRole] = useState("backOffice");
@@ -41,6 +39,7 @@ function Job() {
     const allData = dataRef.docs.map(data =>
       ({ ...data.data(), id: data.id }))
     setData(allData)
+    console.log("data successfully get")
   }
   useEffect(() => {
     getImgData()
@@ -52,7 +51,7 @@ function Job() {
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
       console.log(doc.id, " => ", doc.data());
-      setData([{...doc.data()}])
+      setData([{ ...doc.data() }])
     });
   }
 
@@ -94,6 +93,7 @@ function Job() {
                   <div className="action-btn">
                     <div className="like-btn job-btn" >
                       {/* <FontAwesomeIcon icon={active ? "fa-solid fa-heart" : "fa-regular fa-heart"} /> */}
+                      <FontAwesomeIcon icon={faHeart} />
                     </div>
                     <button className="apply-btn" >Apply</button>
                     <div className="like-btn job-btn " >
@@ -126,6 +126,7 @@ function Job() {
               <div className='mobile-job-nav-menu'>
                 <div className='menu-container' >
                   <ul>
+                    <li className='menu-item' onClick={getImgData} >All Jobs  <FontAwesomeIcon icon={faArrowRight} /> </li>
                     <li className='menu-item' onClick={() => filteredItems("Front-Office-Work")} >Front Office Work <FontAwesomeIcon icon={faArrowRight} /> </li>
                     <li className='menu-item' onClick={() => filteredItems("Back-Office-Work")} >Back Office Work <FontAwesomeIcon icon={faArrowRight} /></li>
                     <li className='menu-item' onClick={() => filteredItems("Banking Sector")} >Banking Sector <FontAwesomeIcon icon={faArrowRight} /></li>
