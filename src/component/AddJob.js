@@ -48,8 +48,8 @@ function AddJob(props) {
                     console.log("url", url)
                     setUrl(url)
                     if (url !== null) {
-                        const collectionRef = collection(db, `${currentRole}`)
-                        await addDoc(collectionRef, { imgUrl: url, title: jobTitle, description: description })
+                        // const collectionRef = collection(db, `${currentRole}`)
+                        // await addDoc(collectionRef, { imgUrl: url, title: jobTitle, description: description })
                         const allJobRef = collection(db, "All-Jobs-Data")
                         await addDoc(allJobRef,
                             {

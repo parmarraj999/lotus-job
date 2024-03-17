@@ -14,6 +14,11 @@
   gap: 1rem;
   animation: bg_change 12s linear infinite;
 }
+@media screen and (max-width: 765px) {
+  .home_container {
+    height: 95vh;
+  }
+}
 .home_container h2 {
   font-size: 3vw;
   color: #dfbb67;

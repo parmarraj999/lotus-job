@@ -48,11 +48,17 @@ function Job() {
 
   const getQuery = async (val) => {
     const q = query(collection(db, "All-Jobs-Data"), where("field", "==", val));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      console.log(doc.id, " => ", doc.data());
-      setData([{ ...doc.data() }])
-    });
+    // const querySnapshot = await getDocs(q);
+    // querySnapshot.forEach((doc) => {
+    //   console.log(doc.id, " => ", doc.data());
+    //   setData([{ ...doc.data(),id:data.id }])
+    // });
+    const dataRef = await getDocs(q)
+    const allData = dataRef.docs.map(data=>
+      ({...data.data(),id:data.id})
+      )
+    setData(allData)
+    console.log(allData)
   }
 
   return (
@@ -69,7 +75,7 @@ function Job() {
             <li className='menu-item' onClick={() => getQuery("Back-Office-Work")} >Back Office Work <FontAwesomeIcon icon={faArrowRight} /></li>
             <li className='menu-item' onClick={() => getQuery("Banking Sector")} >Banking Sector <FontAwesomeIcon icon={faArrowRight} /></li>
             <li className='menu-item' onClick={() => getQuery("Medical")} >Medical <FontAwesomeIcon icon={faArrowRight} /></li>
-            <li className='menu-item' onClick={() => getQuery("Marketing")} >Marketing Field <FontAwesomeIcon icon={faArrowRight} /></li>
+            <li className='menu-item' onClick={() => getQuery("Marketing Fields")} >Marketing Field <FontAwesomeIcon icon={faArrowRight} /></li>
           </ul>
         </div>
       </div>
@@ -127,11 +133,11 @@ function Job() {
                 <div className='menu-container' >
                   <ul>
                     <li className='menu-item' onClick={getImgData} >All Jobs  <FontAwesomeIcon icon={faArrowRight} /> </li>
-                    <li className='menu-item' onClick={() => filteredItems("Front-Office-Work")} >Front Office Work <FontAwesomeIcon icon={faArrowRight} /> </li>
-                    <li className='menu-item' onClick={() => filteredItems("Back-Office-Work")} >Back Office Work <FontAwesomeIcon icon={faArrowRight} /></li>
-                    <li className='menu-item' onClick={() => filteredItems("Banking Sector")} >Banking Sector <FontAwesomeIcon icon={faArrowRight} /></li>
-                    <li className='menu-item' onClick={() => filteredItems("Medical")} >Medical <FontAwesomeIcon icon={faArrowRight} /></li>
-                    <li className='menu-item' onClick={() => filteredItems("Marketing")} >Marketing Field <FontAwesomeIcon icon={faArrowRight} /></li>
+                    <li className='menu-item' onClick={() => getQuery("Front-Office-Work")} >Front Office Work <FontAwesomeIcon icon={faArrowRight} /> </li>
+                    <li className='menu-item' onClick={() => getQuery("Back-Office-Work")} >Back Office Work <FontAwesomeIcon icon={faArrowRight} /></li>
+                    <li className='menu-item' onClick={() => getQuery("Banking Sector")} >Banking Sector <FontAwesomeIcon icon={faArrowRight} /></li>
+                    <li className='menu-item' onClick={() => getQuery("Medical")} >Medical <FontAwesomeIcon icon={faArrowRight} /></li>
+                    <li className='menu-item' onClick={() => getQuery("Marketing Fields")} >Marketing Field <FontAwesomeIcon icon={faArrowRight} /></li>
                   </ul>
                 </div>
               </div>
