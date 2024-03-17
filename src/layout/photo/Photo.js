@@ -24,6 +24,8 @@ function Photo() {
     // console.log(data)
   },[])
 
+  const filterItem = data.filter( item => item.title === "Dddd")
+
   return (
     <div className='photo_container' >
       {
@@ -31,9 +33,9 @@ function Photo() {
           <Upload setShowForm={setShowForm} /> : ""
       }
       
-      <div className='image_container' >
+      <div className='image_container' >  
         {
-          data.map((data) => {
+          filterItem.map((data) => {
             return (
               <div className="image-card">
                 <div className="image-card-container" >

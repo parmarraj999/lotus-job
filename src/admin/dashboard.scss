@@ -136,8 +136,69 @@
 // ---------- recent job section -------- 
 .recent-job-container{
     width: 100%;
-    height: 100%;
-    border: 1px solid red;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    overflow:scroll;
+    &::-webkit-scrollbar{
+        display: none;
+    }
+    .job-card-dashboard{
+        width: 100%;
+        padding: 1rem;
+        border-radius: 15px;
+        background: rgba(0,0,0,0.03);
+        display: flex;
+        flex-direction: column;
+        gap: .8rem;
+        align-items: center;
+        border: 1px solid grey;
+        .dashboard-job-card-image-container{
+            width: 100%;
+            img{
+                width: 100%;
+            }
+        }
+        .dashboard-job-card-detail{
+            // border: 1px solid red;  
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+            padding-top: .5rem;
+            border-top: 1px solid grey;
+            h4{
+                font-size: 20px;
+                color: black;
+                text-transform: capitalize;
+            }
+            h6{
+                font-size: 19px;
+                color: grey;
+                span{
+                    color: black;
+                }
+            }
+            p{
+                font-size: 16px;
+                color: grey;
+            }
+            .delete-btn-jobs{
+                width: 100%;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 18px;
+                font-weight: 600;
+                color: white;
+                background: red;
+                border-radius: 10px;
+                border: none;
+            }
+        }
+    }
 }
 .recent-photo-container{
     width: 100%;

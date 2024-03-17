@@ -34,7 +34,7 @@ function RecentPhoto() {
                 <img src={data.imgUrl} />
                 <h1>{data.name}</h1>
                 <FontAwesomeIcon className='utility-btn' icon={faTrash} onClick={async () => {
-                  let imgRef = ref(storage, `photo`)
+                  let imgRef = ref(storage, `photos/${data.fileName}`)
                   await deleteDoc(doc(db, `photo/${data.id}`))
                   deleteObject(imgRef).then(async () => {
                     console.log("delete successfully")

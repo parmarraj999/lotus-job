@@ -3,14 +3,18 @@ import "./forms.css"
 import { db, storage } from "../firebase/firebaseConfig"
 import { addDoc, collection } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
+import { v4 as uuidv4 } from 'uuid';
+
 
 function AddJob(props) {
 
     const [jobTitle, setJobTitle] = useState();
     const [description, setDescription] = useState();
     const [file, setFile] = useState();
-    const [currentRole, setCurrentRole] = useState();
+    const [fileName, setFiileName] = useState();
+    const [currentRole, setCurrentRole] = useState("Front-Office-Work");
     const [url, setUrl] = useState();
+    const [msg, setMsg] = useState();
 
     const handleTitle = (e) => {
         setJobTitle(e.target.value)
@@ -26,6 +30,7 @@ function AddJob(props) {
     }
 
 
+
     const data = {
         title: jobTitle,
         description: description,
@@ -34,31 +39,40 @@ function AddJob(props) {
 
     // console.log(data)
     const handleAdd = async (e) => {
-        // e.preventDefault();
+        e.preventDefault();
         const storageRef = ref(storage, `/job-role/${file.name}`)
         const uploadTask = uploadBytesResumable(storageRef, file)
         uploadTask.on("state_changed",
-          () => {
-            getDownloadURL(uploadTask.snapshot.ref).then(async (url) => {
-              console.log("url", url)
-              setUrl(url)
-              if (url !== null) {
-                const collectionRef = collection(db, `${currentRole}`)
-                await addDoc(collectionRef, { imgUrl: url, title: jobTitle,description:description })
-                const allJobRef = collection(db,"All-Jobs-Data")
-                await addDoc(allJobRef, { imgUrl: url, title: jobTitle,description:description ,field:currentRole })
-                console.log("added to database")
-                setTimeout(() => {
-                  console.log('successfull')
-                }, 3000);
-              }
-            })
-          },
-          setTimeout(() => {
-            props.setShowAddJobForm(false)
-          }, 3000)
-            )
-      }
+            () => {
+                getDownloadURL(uploadTask.snapshot.ref).then(async (url) => {
+                    console.log("url", url)
+                    setUrl(url)
+                    if (url !== null) {
+                        const collectionRef = collection(db, `${currentRole}`)
+                        await addDoc(collectionRef, { imgUrl: url, title: jobTitle, description: description })
+                        const allJobRef = collection(db, "All-Jobs-Data")
+                        await addDoc(allJobRef,
+                            {
+                                imgUrl: url,
+                                title: jobTitle,
+                                description: description,
+                                field: currentRole,
+                            })
+                        console.log("added to database")
+                        setMsg("Upload Successfully")
+                        console.log('successfull')
+                    } else {
+                        console.log('error')
+                    }
+                })
+                if (msg === "Upload Successfully") {
+                    setTimeout(() => {
+                        props.setShowAddJobForm(false)
+                    }, 3000)
+                }
+            }
+        )
+    }
 
     const handleCancel = () => {
         props.setShowAddJobForm(false)
@@ -85,6 +99,7 @@ function AddJob(props) {
                         </select>
                     </div>
                 </div>
+                <h4 style={{ color: "green" }} >{msg}</h4>
                 <div style={{ display: "flex", gap: "1.2rem" }}>
                     <button className='add-job-btn' onClick={handleAdd} >Add</button>
                     <button className='cancel-btn' onClick={handleCancel} >Cancel</button>

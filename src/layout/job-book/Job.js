@@ -1,23 +1,59 @@
-import React, { useState } from 'react'
-import "./job.css"
+import React, { useState, useEffect } from 'react'
+import './job.css';
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faArrowRight, faBars } from '@fortawesome/fontawesome-free-solid'
-import BackOffice from './role/BackOffice'
 import { faClose } from '@fortawesome/free-solid-svg-icons'
-import FrontOffice from './role/FrontOffice'
-import Banking from './role/Banking'
-import Medical from './role/Medical'
-import Marketing from './role/Marketing'
+import { collection, deleteDoc, doc, getDocs, query, where } from 'firebase/firestore'
+import { db } from '../../firebase/firebaseConfig'
+import { faShare } from "@fortawesome/fontawesome-free-solid";
+import { faHeart } from '@fortawesome/fontawesome-free-solid';
+
 
 function Job() {
-
   const [role, setRole] = useState("backOffice");
   const [menuOpen, SetMenuOpen] = useState(false);
+  const [active, setActive] = useState(false);
+  const [data, setData] = useState([]);
+  const allData = [
+    "Front-Office-Work",
+    "Back-Office-Work",
+    "Banking Sector",
+    "Medical",
+    "Marketing"
+  ]
 
   function handleRole(role) {
     setRole(role)
     SetMenuOpen(false)
+  }
+
+  const filteredItems = (val) => {
+    const newItem = data.filter((newVal) => newVal.field === `${val}`)
+    console.log(newItem)
+    setData(newItem)
+  }
+
+
+  const getImgData = async () => {
+    const storeRef = collection(db, "All-Jobs-Data")
+    const dataRef = await getDocs(storeRef)
+    const allData = dataRef.docs.map(data =>
+      ({ ...data.data(), id: data.id }))
+    setData(allData)
+  }
+  useEffect(() => {
+    getImgData()
+  }, [])
+  // console.log(data)
+
+  const getQuery = async (val) => {
+    const q = query(collection(db, "All-Jobs-Data"), where("field", "==", val));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      console.log(doc.id, " => ", doc.data());
+      setData([{...doc.data()}])
+    });
   }
 
   return (
@@ -29,11 +65,12 @@ function Job() {
         <hr style={{ marginTop: "1rem" }} ></hr>
         <div className='menu-container' >
           <ul>
-            <li className='menu-item' onClick={() => handleRole("frontOffice")} >Front Office Work <FontAwesomeIcon icon={faArrowRight} /> </li>
-            <li className='menu-item' onClick={() => handleRole("backOffice")} >Back Office Work <FontAwesomeIcon icon={faArrowRight} /></li>
-            <li className='menu-item' onClick={() => handleRole("banking")} >Banking Sector <FontAwesomeIcon icon={faArrowRight} /></li>
-            <li className='menu-item' onClick={() => handleRole("medical")} >Medical <FontAwesomeIcon icon={faArrowRight} /></li>
-            <li className='menu-item' onClick={() => handleRole("marketing")} >Marketing Field <FontAwesomeIcon icon={faArrowRight} /></li>
+            <li className='menu-item' onClick={getImgData} >All Jobs  <FontAwesomeIcon icon={faArrowRight} /> </li>
+            <li className='menu-item' onClick={() => getQuery("Front-Office-Work")} >Front Office Work <FontAwesomeIcon icon={faArrowRight} /> </li>
+            <li className='menu-item' onClick={() => getQuery("Back-Office-Work")} >Back Office Work <FontAwesomeIcon icon={faArrowRight} /></li>
+            <li className='menu-item' onClick={() => getQuery("Banking Sector")} >Banking Sector <FontAwesomeIcon icon={faArrowRight} /></li>
+            <li className='menu-item' onClick={() => getQuery("Medical")} >Medical <FontAwesomeIcon icon={faArrowRight} /></li>
+            <li className='menu-item' onClick={() => getQuery("Marketing")} >Marketing Field <FontAwesomeIcon icon={faArrowRight} /></li>
           </ul>
         </div>
       </div>
@@ -41,36 +78,33 @@ function Job() {
         <div className='header-main-container' >
           <h1>Job Roles</h1>
         </div>
-        {
-          role === "backOffice" ?
-            <BackOffice />
-            :
-            ""
-        }
-        {
-          role === "frontOffice" ?
-            <FrontOffice />
-            :
-            ""
-        }
-        {
-          role === "banking" ?
-            <Banking />
-            :
-            ""
-        }
-        {
-          role === "medical" ?
-            <Medical />
-            :
-            ""
-        }
-        {
-          role === "marketing" ?
-            <Marketing />
-            :
-            ""
-        }
+        <div className='role-container' >
+
+          {
+            data.map((data) => {
+              return (
+                <div className="job-card" >
+                  <div className="job-card-image-container" >
+                    <img src={data.imgUrl} />
+                  </div>
+                  <div className="job-card-details">
+                    <h1>{data.title}</h1>
+                    <h2>{data.description}</h2>
+                  </div>
+                  <div className="action-btn">
+                    <div className="like-btn job-btn" >
+                      {/* <FontAwesomeIcon icon={active ? "fa-solid fa-heart" : "fa-regular fa-heart"} /> */}
+                    </div>
+                    <button className="apply-btn" >Apply</button>
+                    <div className="like-btn job-btn " >
+                      <FontAwesomeIcon icon={faShare} />
+                    </div>
+                  </div>
+                </div>
+              )
+            })
+          }
+        </div>
       </div>
       <div className='mobile-job-nav'>
         <Link to='/' className='back-btn' style={{ width: "50px", display: "flex", alignItems: "center", justifyContent: "center" }} >
@@ -92,11 +126,11 @@ function Job() {
               <div className='mobile-job-nav-menu'>
                 <div className='menu-container' >
                   <ul>
-                    <li className='menu-item' onClick={() => handleRole("frontOffice")} >Front Office Work <FontAwesomeIcon icon={faArrowRight} /> </li>
-                    <li className='menu-item' onClick={() => handleRole("backOffice")} >Back Office Work <FontAwesomeIcon icon={faArrowRight} /></li>
-                    <li className='menu-item' onClick={() => handleRole("banking")} >Banking Sector <FontAwesomeIcon icon={faArrowRight} /></li>
-                    <li className='menu-item' onClick={() => handleRole("medical")} >Medical <FontAwesomeIcon icon={faArrowRight} /></li>
-                    <li className='menu-item' onClick={() => handleRole("marketing")} >Marketing Field <FontAwesomeIcon icon={faArrowRight} /></li>
+                    <li className='menu-item' onClick={() => filteredItems("Front-Office-Work")} >Front Office Work <FontAwesomeIcon icon={faArrowRight} /> </li>
+                    <li className='menu-item' onClick={() => filteredItems("Back-Office-Work")} >Back Office Work <FontAwesomeIcon icon={faArrowRight} /></li>
+                    <li className='menu-item' onClick={() => filteredItems("Banking Sector")} >Banking Sector <FontAwesomeIcon icon={faArrowRight} /></li>
+                    <li className='menu-item' onClick={() => filteredItems("Medical")} >Medical <FontAwesomeIcon icon={faArrowRight} /></li>
+                    <li className='menu-item' onClick={() => filteredItems("Marketing")} >Marketing Field <FontAwesomeIcon icon={faArrowRight} /></li>
                   </ul>
                 </div>
               </div>
@@ -108,4 +142,4 @@ function Job() {
   )
 }
 
-export default Job
+export default Job;

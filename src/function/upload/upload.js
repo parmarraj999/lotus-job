@@ -19,7 +19,7 @@ const Upload = (props) => {
   }
 
   const handleUpload = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     const storageRef = ref(storage, `/photos/${file.name}`)
     const uploadTask = uploadBytesResumable(storageRef, file)
     uploadTask.on("state_changed",
@@ -29,7 +29,7 @@ const Upload = (props) => {
           setUrl(url)
           if (url !== null) {
             const collectionRef = collection(db, `photo`)
-            await addDoc(collectionRef, { imgUrl: url, name: title })
+            await addDoc(collectionRef, { imgUrl: url, name: title, fileName : file.name })
             console.log("added to database")
             setTimeout(() => {
               console.log('successfull')
