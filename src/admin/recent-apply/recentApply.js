@@ -6,6 +6,7 @@ import { db } from '../../firebase/firebaseConfig'
 function RecentApply() {
 
   const [data, setData] = useState([])
+  const [count,setCount] = useState(0);
 
   const getImgData = async () => {
     const storeRef = collection(db, "Apply-Data")
@@ -19,7 +20,7 @@ function RecentApply() {
   useEffect(() => {
     getImgData();
     console.log(data)
-  }, [])
+  }, [count])
 
   return (
     <div className='recent-apply-container' >
@@ -48,7 +49,7 @@ function RecentApply() {
                    .then(()=>{
                     console.log('delete successfull')
                    })
-                  
+                   setCount((c)=> c + 1)
                 }}> Delete </div>
               </div>
             )

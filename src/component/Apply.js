@@ -49,7 +49,10 @@ function Apply({ applyTitle, applyField, setShowApply }) {
       date:date,
       time:currTime
     })
-    console.log("data upload successfull")
+    .then(()=>{
+      setShowApply(false)
+      console.log("data upload successfull")
+    })
   }
 
   return (

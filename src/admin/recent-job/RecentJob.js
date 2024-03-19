@@ -8,6 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 function RecentJob() {
 
   const [data, setData] = useState([]);
+  const [count,setCount] = useState(0);
 
   const getImgData = async () => {
     const storeRef = collection(db, "All-Jobs-Data")
@@ -20,7 +21,8 @@ function RecentJob() {
   useEffect(() => {
     getImgData()
     // console.log(data)
-  }, [])
+  }, [count])
+  console.log(count)
 
   return (
     <div className='recent-job-container' >
@@ -38,6 +40,7 @@ function RecentJob() {
                 <button className='delete-btn-jobs'onClick={async()=>{
                   let imgRef = ref(storage, `job-role`)
                   await deleteDoc(doc(db, `All-Jobs-Data/${data.id}`))
+                  setCount((c)=> c + 1)
                   deleteObject(imgRef).then(async () => {
                     console.log("delete successfully")
                   })
