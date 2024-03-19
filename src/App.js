@@ -7,7 +7,6 @@ import Photo from './layout/photo/Photo';
 import Nav from './layout/nav/Nav';
 import FileUpload from './function/upload/upload';
 import Dashboard from './admin/dashboard';
-import Test from './layout/job-book/test';
 
 function App() {
   return (
@@ -23,7 +22,6 @@ function App() {
         <Route exact path="/photo" element={<Photo/>}>
         </Route>
         <Route path='/upload' element={<FileUpload/>}/>
-        <Route path='/test' element={<Test/>} />
       </Routes>
      </BrowserRouter>
     </div>

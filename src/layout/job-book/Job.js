@@ -7,10 +7,11 @@ import { faClose } from '@fortawesome/free-solid-svg-icons'
 import { collection, deleteDoc, doc, getDocs, query, where } from 'firebase/firestore'
 import { db } from '../../firebase/firebaseConfig'
 import { faShare } from "@fortawesome/fontawesome-free-solid";
+import Apply from '../../component/Apply';
 
 function Job() {
   const [role, setRole] = useState("backOffice");
-  const [menuOpen, SetMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState(false);
   const [data, setData] = useState([]);
   const allData = [
@@ -21,9 +22,11 @@ function Job() {
     "Marketing"
   ]
 
+  //file data management 
+
   function handleRole(role) {
     setRole(role)
-    SetMenuOpen(false)
+    setMenuOpen(false)
   }
 
   const filteredItems = (val) => {
@@ -40,6 +43,7 @@ function Job() {
       ({ ...data.data(), id: data.id }))
     setData(allData)
     console.log("data successfully get")
+    setMenuOpen(false)
   }
   useEffect(() => {
     getImgData()
@@ -48,18 +52,29 @@ function Job() {
 
   const getQuery = async (val) => {
     const q = query(collection(db, "All-Jobs-Data"), where("field", "==", val));
-    // const querySnapshot = await getDocs(q);
-    // querySnapshot.forEach((doc) => {
-    //   console.log(doc.id, " => ", doc.data());
-    //   setData([{ ...doc.data(),id:data.id }])
-    // });
     const dataRef = await getDocs(q)
-    const allData = dataRef.docs.map(data=>
-      ({...data.data(),id:data.id})
-      )
+    const allData = dataRef.docs.map(data =>
+      ({ ...data.data(), id: data.id })
+    )
     setData(allData)
     console.log(allData)
+    setMenuOpen(false)
   }
+
+  //apply data management 
+
+  const [showApply, setShowApply] = useState(false);
+  const [applyTitle, setApplyTitle] = useState();
+  const [applyField, setApplyField] = useState();
+
+  const handleApply = (title, field) => {
+    setShowApply(true)
+    setApplyTitle(title)
+    setApplyField(field)
+  }
+  console.log(applyTitle)
+  console.log(applyField)
+
 
   return (
     <div className='job-container' >
@@ -76,6 +91,8 @@ function Job() {
             <li className='menu-item' onClick={() => getQuery("Banking Sector")} >Banking Sector <FontAwesomeIcon icon={faArrowRight} /></li>
             <li className='menu-item' onClick={() => getQuery("Medical")} >Medical <FontAwesomeIcon icon={faArrowRight} /></li>
             <li className='menu-item' onClick={() => getQuery("Marketing Fields")} >Marketing Field <FontAwesomeIcon icon={faArrowRight} /></li>
+            <li className='menu-item' onClick={() => getQuery("Mircro Finance")} >Micro Finance <FontAwesomeIcon icon={faArrowRight} /></li>
+            <li className='menu-item' onClick={() => getQuery("Stock Marketing")} >Stock Marketing <FontAwesomeIcon icon={faArrowRight} /></li>
           </ul>
         </div>
       </div>
@@ -101,7 +118,7 @@ function Job() {
                       {/* <FontAwesomeIcon icon={active ? "fa-solid fa-heart" : "fa-regular fa-heart"} /> */}
                       <FontAwesomeIcon icon={faHeart} />
                     </div>
-                    <button className="apply-btn" >Apply</button>
+                    <button className="apply-btn" onClick={() => handleApply(data.title, data.field)} >Apply</button>
                     <div className="like-btn job-btn " >
                       <FontAwesomeIcon icon={faShare} />
                     </div>
@@ -119,11 +136,11 @@ function Job() {
         <div>
           {
             menuOpen ?
-              <div className='back-btn' onClick={() => SetMenuOpen(false)} style={{ width: "50px", display: "flex", alignItems: "center", justifyContent: "center", background: "black", color: "white" }} >
+              <div className='back-btn' onClick={() => setMenuOpen(false)} style={{ width: "50px", display: "flex", alignItems: "center", justifyContent: "center", background: "black", color: "white" }} >
                 <FontAwesomeIcon icon={faClose} />
               </div>
               :
-              <div className='back-btn' onClick={() => SetMenuOpen(true)} style={{ width: "50px", display: "flex", alignItems: "center", justifyContent: "center", background: "black", color: "white" }} >
+              <div className='back-btn' onClick={() => setMenuOpen(true)} style={{ width: "50px", display: "flex", alignItems: "center", justifyContent: "center", background: "black", color: "white" }} >
                 <FontAwesomeIcon icon={faBars} />
               </div>
           }
@@ -138,6 +155,8 @@ function Job() {
                     <li className='menu-item' onClick={() => getQuery("Banking Sector")} >Banking Sector <FontAwesomeIcon icon={faArrowRight} /></li>
                     <li className='menu-item' onClick={() => getQuery("Medical")} >Medical <FontAwesomeIcon icon={faArrowRight} /></li>
                     <li className='menu-item' onClick={() => getQuery("Marketing Fields")} >Marketing Field <FontAwesomeIcon icon={faArrowRight} /></li>
+                    <li className='menu-item' onClick={() => getQuery("Mircro Finance")} >Micro Finance <FontAwesomeIcon icon={faArrowRight} /></li>
+                    <li className='menu-item' onClick={() => getQuery("Stock Marketing")} >Stock Marketing <FontAwesomeIcon icon={faArrowRight} /></li>
                   </ul>
                 </div>
               </div>
@@ -145,6 +164,9 @@ function Job() {
           }
         </div>
       </div>
+      {
+        showApply ? <Apply applyTitle={applyTitle} applyField={applyField} setShowApply={setShowApply} /> : ""
+      }
     </div>
   )
 }

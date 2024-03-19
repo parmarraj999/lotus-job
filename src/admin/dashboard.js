@@ -8,6 +8,7 @@ import AddJob from '../component/AddJob';
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import Upload from '../function/upload/upload';
 import RecentPhoto from './recent-photo/recentPhoto';
+import RecentApply from './recent-apply/recentApply';
 
 
 function Dashboard() {
@@ -65,7 +66,9 @@ function Dashboard() {
         </Link>
       </div>
       <div className='dashboard-main' >
-        <div className='applied-list' ></div>
+        <div className='applied-list' >
+          <RecentApply/>
+        </div>
         <div className='post-job-container' >
           <div>
             <button className='add-job-btn' onClick={() => setShowAddJobForm(true)} >Add Job</button>

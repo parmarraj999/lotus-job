@@ -1,12 +1,21 @@
 import React from 'react'
 import "./footer.css"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons'
 function Footer() {
   return (
     <div className='footer-container' >
-      <h2>Contact Us </h2>
       <div>
-        <h3>+91 7974477472</h3>
-        <h3>+91 9407006613</h3>
+        <a href='' >
+          <FontAwesomeIcon icon={faInstagram} />
+        </a>
+        <a href='' >
+          <FontAwesomeIcon icon={faFacebook} />
+        </a>
+      </div>
+      <div>
+        <h3>7974477472</h3>
+        <h3>9407006613</h3>
       </div>
     </div>
   )

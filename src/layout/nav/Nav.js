@@ -24,7 +24,8 @@ function Nav() {
         <NavLink className="nav_link" to="/">Home</NavLink>
         <NavLink className="nav_link" to="/about" >About</NavLink>
         <NavLink className="nav_link" to="/job" >Job Book</NavLink>
-        <NavLink className="nav_link" to="/photo" >Photo</NavLink>
+        <NavLink className="nav_link" to="/photo" >Gallary</NavLink>
+        <NavLink className="nav_link" to="/branch" >Branch</NavLink>
       </ul>
       <div className='menu_icon'>
         {
@@ -44,7 +45,8 @@ function Nav() {
             <NavLink className="nav_link" to="/" onClick={closeNav}>Home</NavLink>
             <NavLink className="nav_link" to="/about" onClick={closeNav}>About</NavLink>
             <NavLink className="nav_link" to="/job" onClick={closeNav}>Job Book</NavLink>
-            <NavLink className="nav_link" to="/photo" onClick={closeNav}>Photo</NavLink>
+            <NavLink className="nav_link" to="/photo" onClick={closeNav}>Gallary</NavLink>
+            <NavLink className="nav_link" to="/branch" onClick={closeNav}>Branch</NavLink>
           </div>
       }
     </div>

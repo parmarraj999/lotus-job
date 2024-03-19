@@ -29,8 +29,6 @@ function AddJob(props) {
         setCurrentRole(e.target.value);
     }
 
-
-
     const data = {
         title: jobTitle,
         description: description,
@@ -96,6 +94,8 @@ function AddJob(props) {
                             <option value="Banking Sector">banking Sector</option>
                             <option value="Medical">Medical</option>
                             <option value="Marketing Fields"> Marketing</option>
+                            <option value="Micro Finance"> Micro Finance</option>
+                            <option value="Stock Marketing"> Stock Marketing</option>
                         </select>
                     </div>
                 </div>
