@@ -3,8 +3,6 @@ import "./forms.css"
 import { db, storage } from "../firebase/firebaseConfig"
 import { addDoc, collection } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
-import { v4 as uuidv4 } from 'uuid';
-
 
 function AddJob(props) {
 

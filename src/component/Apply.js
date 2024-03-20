@@ -16,6 +16,7 @@ function Apply({ applyTitle, applyField, setShowApply }) {
   }
   const handleNumber = (e) => {
     setNumber(e.target.value)
+
   }
   const handleAlternateNumber = (e) => {
     setAlternateNumber(e.target.value)

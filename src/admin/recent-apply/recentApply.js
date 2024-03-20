@@ -14,12 +14,12 @@ function RecentApply() {
     const allData = dataRef.docs.map(data =>
       ({ ...data.data(), id: data.id }))
     setData(allData)
-    console.log(data)
+    // console.log(data)
   }
 
   useEffect(() => {
     getImgData();
-    console.log(data)
+    // console.log(data)
   }, [count])
 
   return (

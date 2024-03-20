@@ -35,7 +35,7 @@ function RecentJob() {
               </div>
               <div className='dashboard-job-card-detail' >
                 <h4>{data.title}</h4>
-                <h6>field: <span>{data.field}</span></h6>
+                <h6>Field: <span>{data.field}</span></h6>
                 <p>{data.description}</p>
                 <button className='delete-btn-jobs'onClick={async()=>{
                   let imgRef = ref(storage, `job-role`)

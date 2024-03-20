@@ -23,6 +23,10 @@
             font-size: 48px;
         }
     }
+    .home-btn-container{
+        display: flex;
+        gap: 1rem;
+    }  
 }
 @keyframes bg_change {
     0%,100%{

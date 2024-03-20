@@ -10,6 +10,7 @@ import { deleteObject } from 'firebase/storage';
 function RecentPhoto() {
 
   const [data, setData] = useState([]);
+  const [count,setCount] = useState(0);
 
   const getImgData = async () => {
     const storeRef = collection(db, `photo`)
@@ -17,12 +18,12 @@ function RecentPhoto() {
     const allData = dataRef.docs.map(data =>
       ({ ...data.data(), id: data.id }))
     setData(allData)
-    console.log(data)
+    // console.log(data)
   }
   useEffect(() => {
     getImgData()
     // console.log(data)
-  }, [])
+  }, [count])
 
   return (
     <div className='recent-photo-container' >
@@ -39,6 +40,7 @@ function RecentPhoto() {
                   deleteObject(imgRef).then(async () => {
                     console.log("delete successfully")
                   })
+                  setCount((c)=> c + 1)
                 }} />
               </div>
             )

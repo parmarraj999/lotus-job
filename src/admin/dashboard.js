@@ -78,7 +78,7 @@ function Dashboard() {
         <div className='photo-upload-container'>
           <div className='header-photos' >
             <button className='add-button'>
-              <FontAwesomeIcon icon={faPlus} onClick={()=>setShowForm(true)}/>
+              Add Photo
             </button>
           </div>
             <RecentPhoto/>

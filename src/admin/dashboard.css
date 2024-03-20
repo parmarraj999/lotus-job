@@ -119,13 +119,13 @@
   align-items: center;
 }
 .dashboard-container .dashboard-main .photo-upload-container .header-photos .add-button {
-  width: 60px;
-  height: 60px;
-  background-color: rgb(29, 116, 255);
-  font-size: 24px;
-  font-weight: 600;
+  width: 180px;
+  height: 50px;
   color: white;
+  background-color: rgb(29, 116, 255);
   border: none;
+  font-size: 18px;
+  font-weight: 600;
   border-radius: 10px;
 }
 
@@ -156,6 +156,7 @@
 }
 .recent-job-container .job-card-dashboard .dashboard-job-card-image-container img {
   width: 100%;
+  border-radius: 0.8rem;
 }
 .recent-job-container .job-card-dashboard .dashboard-job-card-detail {
   width: 90%;
@@ -197,8 +198,11 @@
 
 .recent-photo-container {
   width: 100%;
-  height: 100%;
-  overflow-y: scroll;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  overflow: scroll;
 }
 .recent-photo-container::-webkit-scrollbar {
   display: none;
