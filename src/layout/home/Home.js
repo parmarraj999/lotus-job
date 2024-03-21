@@ -3,7 +3,6 @@ import "./home.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight, faArrowUp } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
-import Footer from '../footer/footer'
 
 function Home() {
 
@@ -16,7 +15,6 @@ function Home() {
         <a className='button' >Refference</a>
       </div>
       <button className='button' >Upload Your Job <FontAwesomeIcon icon={faArrowUp}/></button>
-      <Footer />
     </div>
   )
 }

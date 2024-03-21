@@ -19,7 +19,6 @@
 }
 .nav_container ul {
   display: flex;
-  gap: 1rem;
   align-items: center;
 }
 .nav_container ul .nav_link {

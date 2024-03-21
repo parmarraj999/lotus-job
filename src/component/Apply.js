@@ -59,7 +59,8 @@ function Apply({ applyTitle, applyField, setShowApply }) {
   return (
     <div className='form' >
       <div className='form-card' >
-        <div>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"center",flexDirection:"column",gap:".5rem"}} >
+          <img src='../../../images/logo.jpg' style={{width:"80px",borderRadius:"15px"}} />
           <h2>Apply to Job</h2>
         </div>
         <div className='form-inputs' >

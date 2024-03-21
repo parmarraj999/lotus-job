@@ -21,7 +21,6 @@ function App() {
         <Route/>
         <Route exact path="/photo" element={<Photo/>}>
         </Route>
-        <Route path='/upload' element={<FileUpload/>}/>
       </Routes>
      </BrowserRouter>
     </div>
