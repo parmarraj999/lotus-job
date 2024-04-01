@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faArrowRight, faBars, faHeart } from '@fortawesome/fontawesome-free-solid'
 import { faClose } from '@fortawesome/free-solid-svg-icons'
-import { collection, deleteDoc, doc, getDocs, query, where } from 'firebase/firestore'
+import { collection, getDocs, query, where } from 'firebase/firestore'
 import { db } from '../../firebase/firebaseConfig'
 import { faShare } from "@fortawesome/fontawesome-free-solid";
-import Apply from '../../component/Apply';
+import ApplyForm from '../../component/apply-form/applyForm';
 
 function Job() {
   const [role, setRole] = useState("backOffice");
@@ -164,8 +164,11 @@ function Job() {
           }
         </div>
       </div>
-      {
+      {/* {
         showApply ? <Apply applyTitle={applyTitle} applyField={applyField} setShowApply={setShowApply} /> : ""
+      } */}
+      {
+        showApply ? <ApplyForm applyTitle={applyTitle} applyField={applyField} setShowApply={setShowApply} /> : ""
       }
     </div>
   )

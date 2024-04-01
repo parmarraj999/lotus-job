@@ -12,7 +12,7 @@ function Home() {
       <h2>Apna Job Book</h2>
       <div className='home-btn-container' >
         <Link to="/job" className='button'> Explore Jobs <FontAwesomeIcon icon={faArrowRight} /></Link>
-        <a className='button' >Refference</a>
+        <a href='https://docs.google.com/forms/d/e/1FAIpQLSeqqWIyRzvIpPTsdzwpLFZ5HXwdBIKaUCNs7gJs8iXlmq1M9g/viewform' className='button' >Refference</a>
       </div>
       <button className='button' >Upload Your Job <FontAwesomeIcon icon={faArrowUp}/></button>
     </div>

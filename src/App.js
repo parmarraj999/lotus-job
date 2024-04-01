@@ -7,6 +7,7 @@ import Photo from './layout/photo/Photo';
 import Nav from './layout/nav/Nav';
 import FileUpload from './function/upload/upload';
 import Dashboard from './admin/dashboard';
+import ApplyForm from './component/apply-form/applyForm';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route/>
         <Route exact path="/photo" element={<Photo/>}>
         </Route>
+        <Route path='/apply' element={<ApplyForm/>}/>
       </Routes>
      </BrowserRouter>
     </div>

@@ -82,7 +82,7 @@ function AddJob(props) {
                 </div>
                 <div className='form-inputs' >
                     <input type='text' placeholder='Job Title' onChange={handleTitle} />
-                    <input type='' placeholder='Job Description' onChange={handleDescription} />
+                    <textarea type='' placeholder='Job Description' onChange={handleDescription} style={{padding:".5rem"}}/>
                     <input type='file' onChange={handleFile} />
                     <div className='field-selecter'>
                         <h4>Choose Field</h4>

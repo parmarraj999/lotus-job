@@ -22,7 +22,7 @@ function Dashboard() {
   const [password, setPassword] = useState();
   const [error, setError] = useState()
 
-  const [hidePop, setHidePop] = useState(false);//set true before host
+  const [hidePop, setHidePop] = useState(true);//set true before host
   const [showAddJobForm, setShowAddJobForm] = useState(false);
   const [showForm, setShowForm] = useState(false);
 
@@ -54,7 +54,10 @@ function Dashboard() {
               <input type='text' placeholder='Enter Username' value={username} onChange={handleUsername} />
               <input type='password' placeholder='Enter Password' value={password} onChange={handlePassword} />
               <p>{error}</p>
-              <button onClick={handleLogin}>Log In</button>
+              <div  style={{display:"flex",gap:"1.2rem",width:"100%"}}>
+              <button onClick={handleLogin} style={{width:"100%"}}>Log In</button>
+              <Link style={{width:"100%",background:"grey",display:"flex",alignItems:"center",justifyContent:"center",textDecoration:"none",color:"black",borderRadius:"2rem"}} to="/">Back</Link>
+              </div>
             </div>
           </div>
           : ""

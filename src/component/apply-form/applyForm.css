@@ -1,0 +1,113 @@
+.apply-form-container {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.apply-form-container .apply-card2 {
+  width: 90%;
+  height: 90%;
+  background: white;
+  display: flex;
+  gap: 2rem;
+  border-radius: 1.5rem;
+  padding: 2rem;
+}
+.apply-form-container .apply-card2 .card-section {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.apply-form-container .apply-card2 .card-section .tag-apply {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.apply-form-container .apply-card2 .card-section .tag-apply h3 {
+  padding: 0.4rem 1.5rem;
+  border-radius: 5px;
+  background: rgba(98, 255, 0, 0.1);
+  color: rgb(64, 153, 0);
+}
+.apply-form-container .apply-card2 .card-section .form-social-icon {
+  display: flex;
+  gap: 1.2rem;
+  font-size: 28px;
+}
+.apply-form-container .apply-card2 .card-section .form-social-icon a {
+  color: black;
+}
+.apply-form-container .apply-card2 .card-section .card-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+.apply-form-container .apply-card2 .card-section .card-form .input-form {
+  width: 100%;
+  border-bottom: 2px solid black;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  padding: 0.5rem 0;
+  font-size: 18px;
+  outline: none;
+}
+.apply-form-container .apply-card2 .card-section .card-form .btn-container {
+  width: 100%;
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 0.5rem;
+}
+.apply-form-container .apply-card2 .card-section .card-form .btn-container button {
+  width: 100%;
+  padding: 0.8rem 0;
+  font-size: 18px;
+  background: rgb(0, 145, 255);
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+}
+.apply-form-container .apply-card2 .card-section .card-form .btn-container .cancel-btn {
+  background: rgba(0, 0, 0, 0.2);
+  color: black;
+}
+.apply-form-container .apply-card2 .card-section .card-logo {
+  width: 80px;
+  border-radius: 10px;
+}
+.apply-form-container .apply-card2 .img-work {
+  width: 60%;
+}
+.apply-form-container .apply-card2 .img-work img {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+}
+
+@media screen and (max-width: 765px) {
+  .apply-form-container .apply-card2 {
+    height: 78%;
+    padding: 1.2rem;
+  }
+  .apply-form-container .apply-card2 .card-section {
+    width: 100%;
+  }
+  .apply-form-container .apply-card2 .card-section .tag-apply h3 {
+    padding: 0.4rem 0.8rem;
+    font-size: 16px;
+  }
+  .apply-form-container .apply-card2 .img-work {
+    display: none;
+  }
+}/*# sourceMappingURL=applyForm.css.map */
