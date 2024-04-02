@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { db, storage } from "../../firebase/firebaseConfig";
 import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore'
-import "../dashboard.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/fontawesome-free-solid';
 import { ref } from 'firebase/storage';
 import { deleteObject } from 'firebase/storage';
+import "../recent-css/recent-all.css"
+
 
 function RecentPhoto() {
 

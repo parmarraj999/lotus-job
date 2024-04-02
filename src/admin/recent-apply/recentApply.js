@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import "./recentApply.css"
+import "../recent-css/recent-all.css"
 import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore'
 import { db } from '../../firebase/firebaseConfig'
 

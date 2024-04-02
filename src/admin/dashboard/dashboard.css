@@ -1,0 +1,152 @@
+.dashboard-container-two {
+  position: absolute;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100vh;
+  background: rgb(233, 233, 233);
+  padding: 1.2rem;
+  display: flex;
+  gap: 1.5rem;
+}
+.dashboard-container-two .side-nav {
+  width: 22%;
+  background: black;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+.dashboard-container-two .side-nav .side-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dashboard-container-two .side-nav .side-logo img {
+  width: 50%;
+}
+.dashboard-container-two .side-nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.dashboard-container-two .side-nav ul .navlink-sidenav {
+  padding: 0.8rem 1rem;
+  color: white;
+  text-decoration: none;
+}
+.dashboard-container-two .main-block {
+  width: 78%;
+  display: flex;
+  flex-direction: column;
+}
+.dashboard-container-two .main-block .main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dashboard-container-two .main-block .main-header h2 {
+  font-size: 28px;
+}
+.dashboard-container-two .main-block .main-header .header-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.dashboard-container-two .main-block .main-header .header-btn .exit-icon {
+  width: 50px;
+  height: 50px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  border: 1px solid transparent;
+  justify-content: center;
+  transition: 0.3s all;
+}
+.dashboard-container-two .main-block .main-header .header-btn .exit-icon:hover {
+  border: 1px solid black;
+  border: 1px solid black;
+}
+.dashboard-container-two .main-block .main-header .header-btn .add-job-btn {
+  width: 180px;
+  height: 50px;
+  color: white;
+  background-color: rgb(29, 116, 255);
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 10px;
+}
+.dashboard-container-two .main-block .main-header .header-btn .add-photo-button {
+  width: 180px;
+  height: 45px;
+  color: white;
+  background-color: rgb(29, 116, 255);
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 10px;
+}
+.dashboard-container-two .main-block .main-section-container {
+  width: 100%;
+  height: 100%;
+  padding: 1rem 0;
+}
+
+.auth-popup {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: white;
+}
+.auth-popup .pop-card {
+  width: 30%;
+  padding: 1.4rem 2rem;
+  border-radius: 1.2rem;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.8rem;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.2);
+}
+.auth-popup .pop-card input {
+  width: 90%;
+  height: 56px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 0 1rem;
+  font-size: 18px;
+  background: transparent;
+}
+.auth-popup .pop-card button {
+  width: 180px;
+  height: 46px;
+  background: black;
+  color: white;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2rem;
+}
+.auth-popup .pop-card p {
+  font-size: 14px;
+  color: red;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 765px) {
+  .dashboard-container-two {
+    display: none;
+  }
+}/*# sourceMappingURL=try.css.map */

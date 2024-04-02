@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import "../dashboard"
 import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore'
 import { db, storage } from '../../firebase/firebaseConfig'
 import { deleteObject, ref } from 'firebase/storage';
-import { v4 as uuidv4 } from 'uuid';
+import "../recent-css/recent-all.css"
+
 
 function RecentJob() {
 
