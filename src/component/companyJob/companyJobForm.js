@@ -13,6 +13,7 @@ function CompanyJobForm({ setShowCompanyJobForm }) {
     const [jobTitle, setJobTitle] = useState();
     const [email, setEmail] = useState();
     const [jobDescription, setJobDescription] = useState();
+    const [currentRole, setCurrentRole] = useState("HR");
 
     const handleName = (e) => {
         setName(e.target.value)
@@ -34,7 +35,9 @@ function CompanyJobForm({ setShowCompanyJobForm }) {
     const handleCancel = () => {
         setShowCompanyJobForm(false)
     }
-
+    const handleRole = (e) => {
+        setCurrentRole(e.target.value);
+    }
 
     const dateVar = new Date();
     const date = dateVar.toDateString();
@@ -49,6 +52,7 @@ function CompanyJobForm({ setShowCompanyJobForm }) {
             number: number,
             jobTitle: jobTitle,
             description: jobDescription,
+            requestBy :currentRole, 
             date: date,
             time: currTime
         })
@@ -62,8 +66,8 @@ function CompanyJobForm({ setShowCompanyJobForm }) {
     return (
         <div className='apply-form-container' >
             <div className='apply-card2' >
-                <div className='card-section' >
-                    <img src='../../../images/logo.jpg' className='card-logo' />
+                <div className='card-section2' >
+                    <img src='../../../images/logo.jpg' className='card-logo-2' />
                     <h2>Uplaod Jobs in Lotus</h2>
                     <div className='card-form' >
                         <input type='text' className='input-form' placeholder='Company Name' onChange={handleName} />
@@ -71,9 +75,16 @@ function CompanyJobForm({ setShowCompanyJobForm }) {
                         <input type='text' placeholder='Contact Number' className='input-form' onChange={handleNumber} />
                         <input type='text' className='input-form' placeholder='Job Title' onChange={handleJobTitle} />
                         <textarea type='text' className='input-form' placeholder='Job Description' onChange={handleDescription} />
+                        <div className='field-selecter'>
+                        <h4>Who Are You ?</h4>
+                        <select onChange={handleRole} >
+                            <option value="HR">HR</option>
+                            <option value="Owner">Owner</option>
+                        </select>
+                    </div>
                         <div className='btn-container' >
-                            <button onClick={handleApply}>Apply</button>
-                            <button className='cancel-btn' onClick={handleCancel} >Cancel</button>
+                            <button className='addbtn' onClick={handleApply}>Apply</button>
+                            <button className='cancel-btn2' onClick={handleCancel} >Cancel</button>
                         </div>
                     </div>
                     <div className='form-social-icon' >

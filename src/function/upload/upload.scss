@@ -32,6 +32,23 @@
             font-weight: 600;
             color: #dfab33;
         }
+        .upload-msg{
+            font-size:16px;
+            color: black;
+            text-transform: capitalize;
+        }
+        .upload-bar{
+            width: 80%;
+            height: 15px;
+            background: black;
+            border-radius: 15px;
+            .bar{
+                height: 100%;
+                background: rgb(9, 255, 0);
+                border-radius: 15px;
+                transition: .4s all;
+            }
+        }
         .file_input {
             border: 2px solid grey;
             background: transparent;

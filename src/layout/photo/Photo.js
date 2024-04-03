@@ -2,7 +2,8 @@ import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import "./photo.css";
 import Upload from '../../function/upload/upload';
-import { db } from "../../firebase/firebaseConfig";
+import { db, storage } from "../../firebase/firebaseConfig";
+import { listAll, ref } from 'firebase/storage';
 
 function Photo() {
 
@@ -12,7 +13,7 @@ function Photo() {
   const [data, setData] = useState([])
 
   const getImgData = async () => {
-    const storeRef = collection(db, `photo`)
+    const storeRef = collection(db, `photos`)
     const dataRef = await getDocs(storeRef)
     const allData = dataRef.docs.map(data =>
       ({ ...data.data(), id: data.id }))
@@ -22,6 +23,15 @@ function Photo() {
   useEffect(() => {
     getImgData()
   },[])
+
+  useEffect(()=>{
+    const listRef = ref(storage, 'photos/');
+    listAll(listRef).then((res)=>{
+      res.items.forEach((itemRef) => {
+        console.log(itemRef)
+      });
+    })
+  })
 
   return (
     <div className='photo_container' >
@@ -41,9 +51,6 @@ function Photo() {
               <div className="image-card">
                 <div className="image-card-container" >
                   <img src={`${data.imgUrl}`} />
-                </div>
-                <div className='image-title'>
-                  <h1 style={{fontSize:"22px"}} >{data.name}</h1>
                 </div>
               </div>
             )

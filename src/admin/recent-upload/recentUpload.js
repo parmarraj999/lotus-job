@@ -4,7 +4,9 @@ import "../recent-css/recent-all.css"
 
 function RecentUpload() {
   return (
-    <div>RecentUpload</div>
+    <div className='company-job-container' >
+
+    </div>
   )
 }
 

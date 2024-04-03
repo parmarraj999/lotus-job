@@ -14,17 +14,21 @@ function RecentPhoto() {
   const [count,setCount] = useState(0);
 
   const getImgData = async () => {
-    const storeRef = collection(db, `photo`)
+    const storeRef = collection(db, `photos`)
     const dataRef = await getDocs(storeRef)
     const allData = dataRef.docs.map(data =>
       ({ ...data.data(), id: data.id }))
     setData(allData)
-    // console.log(data)
+    console.log(data)
   }
   useEffect(() => {
     getImgData()
-    // console.log(data)
+    console.log(data)
   }, [count])
+
+  useEffect(()=>{
+    
+  })
 
   return (
     <div className='recent-photo-container' >
@@ -34,15 +38,18 @@ function RecentPhoto() {
             return (
               <div className='photo-card' >
                 <img src={data.imgUrl} />
-                <h1>{data.name}</h1>
-                <FontAwesomeIcon className='utility-btn' icon={faTrash} onClick={async () => {
-                  let imgRef = ref(storage, `photos/${data.fileName}`)
-                  await deleteDoc(doc(db, `photo/${data.id}`))
+                <h1 className='img-title'>{data.name}</h1>
+                <div className='img-delete-btn' onClick={async () => {
+                  let imgRef = ref(storage, `photos/${data.name}`)
+                  await deleteDoc(doc(db, `photos/${data.id}`))
                   deleteObject(imgRef).then(async () => {
                     console.log("delete successfully")
                   })
                   setCount((c)=> c + 1)
-                }} />
+                }}>
+                  <h1>Delete</h1>
+                <FontAwesomeIcon className='utility-btn' icon={faTrash}  />
+                  </div>
               </div>
             )
           })
