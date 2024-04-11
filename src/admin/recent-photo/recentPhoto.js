@@ -26,10 +26,6 @@ function RecentPhoto() {
     console.log(data)
   }, [count])
 
-  useEffect(()=>{
-    
-  })
-
   return (
     <div className='recent-photo-container' >
       <div className='photo-container' >
@@ -38,7 +34,7 @@ function RecentPhoto() {
             return (
               <div className='photo-card' >
                 <img src={data.imgUrl} />
-                <h1 className='img-title'>{data.name}</h1>
+                <h1 className='img-title'>{data.title}</h1>
                 <div className='img-delete-btn' onClick={async () => {
                   let imgRef = ref(storage, `photos/${data.name}`)
                   await deleteDoc(doc(db, `photos/${data.id}`))

@@ -11,6 +11,7 @@ import RecentApply from './admin/recent-apply/recentApply';
 import RecentPhoto from './admin/recent-photo/recentPhoto';
 import RecentUpload from './admin/recent-upload/recentUpload';
 import Dashboard from './admin/dashboard/dashboard';
+import RecentVideo from './admin/recent-video/RecentVideo';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path='recent-apply' element={<RecentApply/>}/>
           <Route path='recent-photo' element={<RecentPhoto/>}/>
           <Route path='recent-uploads' element={<RecentUpload/>}/>
+          <Route path='recent-video' element={<RecentVideo/>}/>
           </Route>
         <Route exact path="/" element={<Home/>}/>
         <Route path="/about" element={<About/>}/>

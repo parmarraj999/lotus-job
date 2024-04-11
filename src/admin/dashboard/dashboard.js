@@ -6,6 +6,7 @@ import { Outlet } from 'react-router'
 import { Link, NavLink } from 'react-router-dom'
 import AddJob from '../../component/AddJob'
 import Upload from '../../function/upload/upload'
+import VideoUpload from '../../function/upload/VideoUpload'
 
 function Dashboard() {
 
@@ -21,6 +22,7 @@ function Dashboard() {
   const [hidePop, setHidePop] = useState(false);//set true before host
   const [showAddJobForm, setShowAddJobForm] = useState(false);//add jobs form
   const [showForm, setShowForm] = useState(false);//add photo form
+  const [showVideoForm,setShowVideoForm] = useState(false)
 
   const handleUsername = (e) => {
     setUsername(e.target.value)
@@ -39,7 +41,7 @@ function Dashboard() {
     }
   }
 
-  const [showBtn, setShowBtn] = useState("")
+  const [showBtn, setShowBtn] = useState("job-btn")
 
   return (
     <>
@@ -67,6 +69,7 @@ function Dashboard() {
                 <NavLink className="navlink-sidenav" to='recent-job'  onClick={()=>setShowBtn("job-btn")}>Recent Job</NavLink>
                 <NavLink className="navlink-sidenav" to='recent-apply'  onClick={()=>setShowBtn("")}>Recent apply</NavLink>
                 <NavLink className="navlink-sidenav" to='recent-photo'  onClick={()=>setShowBtn("photo-btn")}>Recent photo</NavLink>
+                <NavLink className="navlink-sidenav" to='recent-video' onClick={()=>setShowBtn("video-btn")}>Recent Video</NavLink>
                 <NavLink className="navlink-sidenav" to='recent-uploads' onClick={()=>setShowBtn("")}>Recent upload</NavLink>
               </ul>
             </div>
@@ -78,6 +81,13 @@ function Dashboard() {
                     showBtn === "job-btn" ?
                       <div className='addBtn'>
                         <button className='add-job-btn' onClick={() => setShowAddJobForm(true)} >Add Job</button>
+                      </div>
+                      : ""
+                  }
+                  {
+                    showBtn === "video-btn" ?
+                      <div className='addBtn'>
+                        <button className='add-job-btn' onClick={() => setShowVideoForm(true)} >Add Video</button>
                       </div>
                       : ""
                   }
@@ -104,6 +114,10 @@ function Dashboard() {
             {/* // add job form  */}
             {
               showAddJobForm ? <AddJob setShowAddJobForm={setShowAddJobForm} /> : ""
+            }
+            {/* // video upload form  */}
+            {
+              showVideoForm ? <VideoUpload setShowVideoForm={setShowVideoForm}/> : ""
             }
           </div>
       }

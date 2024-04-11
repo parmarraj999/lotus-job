@@ -7,6 +7,7 @@ import { db, storage } from "../../firebase/firebaseConfig";
 const Upload = (props) => {
 
   const [file, setFile] = useState(null)
+  const [title,setTitle] = useState()
   const [url, setUrl] = useState();
   const [percent, setPercent] = useState(0)
 
@@ -18,7 +19,9 @@ const Upload = (props) => {
     setFile(event.target.files[0])
   }
 
-
+  const handleTitle = (e)=>{
+    setTitle(e.target.value)
+  }
 
   const handleUpload = (e) => {
     e.preventDefault();
@@ -38,7 +41,7 @@ const Upload = (props) => {
           setUrl(url)
           if (url !== null) {
             const collectionRef = collection(db, `photos/`)
-            await addDoc(collectionRef, { imgUrl: url, name: file.name })
+            await addDoc(collectionRef, { imgUrl: url, name: file.name, title:title })
             console.log("added to database")
             setMessage("done")
             setTimeout(() => {
@@ -59,6 +62,7 @@ const Upload = (props) => {
       <div className='upload_form' >
         <h2>Upload Image</h2>
         <input type='file' className='file_input' onChange={handleFile} />
+        <input type="text" placeholder="Image Title" className="title_input" onChange={handleTitle} />
         <h2>{file?.name}</h2>
         <div className="upload-bar">
           <div className="bar" style={{width:`${percent}%`}} ></div>
