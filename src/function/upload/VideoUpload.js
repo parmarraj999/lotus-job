@@ -66,11 +66,11 @@ const VideoUpload = (props) => {
         </div>
         {
           clicked ?
-            <button style={{ background: "grey" }} onClick={() => props.setShowForm(false)}>cancel</button>
+            <button style={{ background: "grey" }} onClick={() => props.setShowVideoForm(false)}>cancel</button>
             :
             <div style={{ display: "flex", gap: ".8rem" }} >
               <button onClick={handleUpload}>Upload</button>
-              <button style={{ background: "grey" }} onClick={() => props.setShowForm(false)}>cancel</button>
+              <button style={{ background: "grey" }} onClick={() => props.setShowVideoForm(false)}>cancel</button>
             </div>
         }
       </div>

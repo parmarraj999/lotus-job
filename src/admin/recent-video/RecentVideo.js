@@ -11,6 +11,10 @@ function RecentVideo() {
   const [data, setData] = useState([]);
   const [count,setCount] = useState(0);
 
+  const [showPop, setShowPop] = useState(false)
+  const [deleteId, setDeleteId] = useState();
+  const [dataFile, setDataFile] = useState();
+
   const getImgData = async () => {
     const storeRef = collection(db, `videos`)
     const dataRef = await getDocs(storeRef)
@@ -24,9 +28,37 @@ function RecentVideo() {
     console.log(data)
   }, [count])
 
+  const handleDelete = (dataId,fileName) => {
+    setShowPop(true);
+    setDeleteId(dataId)
+    setDataFile(fileName)
+    console.log(deleteId)
+  }
+
 
   return (
     <div className='recent-video-container'>
+       {
+        showPop ?
+          <div className='sure-container' >
+            <div className='sure-card' >
+              <h1>Are you Sure ?</h1>
+              <div className='btn-container-sure' >
+                <div className='delete-btn-sure' onClick={async () => {
+                  let imgRef = ref(storage, `videos/${dataFile}`)
+                  await deleteDoc(doc(db, `videos/${deleteId}`))
+                  deleteObject(imgRef).then(async () => {
+                    console.log("delete successfully")
+                    setShowPop(false)
+                  })
+                  setCount((c)=> c + 1)
+                }}> Delete </div>
+                <button className='cancel-btn-sure' onClick={() => setShowPop(false)}>Cancel</button>
+              </div>
+            </div>
+          </div>
+          : ""
+      }
       {
         data.map((data,key)=>{
           return(
@@ -34,14 +66,7 @@ function RecentVideo() {
               <video controls>
                 <source src={`${data.imgUrl}`}/>
               </video>
-              <div className='video-delete-btn' onClick={async () => {
-                  let imgRef = ref(storage, `videos/${data.name}`)
-                  await deleteDoc(doc(db, `videos/${data.id}`))
-                  deleteObject(imgRef).then(async () => {
-                    console.log("delete successfully")
-                  })
-                  setCount((c)=> c + 1)
-                }}>
+              <div className='video-delete-btn' onClick={async () => handleDelete(data.id,data.name)}>
                   <h1>Delete</h1>
                 <FontAwesomeIcon className='utility-btn' icon={faTrash}  />
                   </div>

@@ -183,67 +183,6 @@
 .recent-apply-container::-webkit-scrollbar {
   display: none;
 }
-.recent-apply-container .sure-container {
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.2);
-  -webkit-backdrop-filter: blur(20px);
-          backdrop-filter: blur(20px);
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-.recent-apply-container .sure-container .sure-card {
-  width: 40%;
-  height: auto;
-  padding: 1rem;
-  background-color: white;
-  border-radius: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-.recent-apply-container .sure-container .sure-card h1 {
-  font-size: 24px;
-}
-.recent-apply-container .sure-container .sure-card .btn-container-sure {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.recent-apply-container .sure-container .sure-card .btn-container-sure .delete-btn-sure {
-  width: 100%;
-  padding: 0.7rem 2rem;
-  color: white;
-  background: red;
-  border-radius: 10px;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  font-weight: 600;
-}
-.recent-apply-container .sure-container .sure-card .btn-container-sure .cancel-btn-sure {
-  width: 100%;
-  padding: 0.7rem 2rem;
-  color: black;
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  font-weight: 600;
-}
 
 .apply-header {
   display: flex;
@@ -418,4 +357,68 @@
   font-size: 18px;
   font-weight: 600;
   width: 200px;
+}
+
+.sure-container {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.sure-container .sure-card {
+  width: 40%;
+  height: auto;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.sure-container .sure-card h1 {
+  font-size: 24px;
+}
+.sure-container .sure-card .btn-container-sure {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.sure-container .sure-card .btn-container-sure .delete-btn-sure {
+  width: 100%;
+  padding: 0.7rem 2rem;
+  color: white;
+  background: red;
+  border-radius: 10px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.sure-container .sure-card .btn-container-sure .cancel-btn-sure {
+  width: 100%;
+  padding: 0.7rem 2rem;
+  color: black;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
 }/*# sourceMappingURL=recent-all.css.map */

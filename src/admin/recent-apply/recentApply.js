@@ -6,10 +6,10 @@ import { db } from '../../firebase/firebaseConfig'
 function RecentApply() {
 
   const [data, setData] = useState([])
-  const [count,setCount] = useState(0);
+  const [count, setCount] = useState(0);
 
-  const [showPop,setShowPop]=useState(false)
-  const [deleteId,setDeleteId] = useState();
+  const [showPop, setShowPop] = useState(false)
+  const [deleteId, setDeleteId] = useState();
 
   const getImgData = async () => {
     const storeRef = collection(db, "Apply-Data")
@@ -25,7 +25,7 @@ function RecentApply() {
     // console.log(data)
   }, [count])
 
-  const handleDelete = (dataId)=>{
+  const handleDelete = (dataId) => {
     setShowPop(true);
     setDeleteId(dataId)
     console.log(deleteId)
@@ -34,26 +34,26 @@ function RecentApply() {
   return (
     <div className={showPop ? 'recent-apply-container oh' : 'recent-apply-container os'} >
       {
-        showPop ? 
+        showPop ?
           <div className='sure-container' >
-        <div className='sure-card' >
-          <h1>Are you Sure ?</h1>
-          <div className='btn-container-sure' >
-             <div className='delete-btn-sure' onClick={async()=>{
-                   await deleteDoc(doc(db, `Apply-Data/${deleteId}`))
-                   .then(()=>{
-                    console.log('delete successfull')
-                    setTimeout(() => {
-                      setShowPop(false)
-                    }, 3000);
-                   })
-                   setCount((c)=> c + 1)
+            <div className='sure-card' >
+              <h1>Are you Sure ?</h1>
+              <div className='btn-container-sure' >
+                <div className='delete-btn-sure' onClick={async () => {
+                  await deleteDoc(doc(db, `Apply-Data/${deleteId}`))
+                    .then(() => {
+                      console.log('delete successfull')
+                      setTimeout(() => {
+                        setShowPop(false)
+                      }, 3000);
+                    })
+                  setCount((c) => c + 1)
                 }}> Delete </div>
-                <button className='cancel-btn-sure' onClick={()=>setShowPop(false)}>Cancel</button>
+                <button className='cancel-btn-sure' onClick={() => setShowPop(false)}>Cancel</button>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-        : ""
+          : ""
       }
       <div className='apply-header' >Applied</div>
       <div className='apply-container' >
@@ -75,7 +75,7 @@ function RecentApply() {
                 <div style={{ display: 'flex', gap: "1rem" }} >
                   <h5 className='dateTime'>Time : <span>{data.time}</span> / Date : <span>{data.date}</span></h5>
                 </div>
-                <div className='delete-btn' onClick={()=>handleDelete(data.id)}> Delete </div>
+                <div className='delete-btn' onClick={() => handleDelete(data.id)}> Delete </div>
               </div>
             )
           })

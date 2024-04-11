@@ -8,7 +8,11 @@ import "../recent-css/recent-all.css"
 function RecentJob() {
 
   const [data, setData] = useState([]);
-  const [count,setCount] = useState(0);
+  const [count, setCount] = useState(0);
+
+  const [showPop, setShowPop] = useState(false)
+  const [deleteId, setDeleteId] = useState();
+  const [dataFile, setDataFile] = useState();
 
   const getImgData = async () => {
     const storeRef = collection(db, "All-Jobs-Data")
@@ -24,10 +28,39 @@ function RecentJob() {
   }, [count])
   console.log(count)
 
+  const handleDelete = (dataId, fileName) => {
+    setShowPop(true);
+    setDeleteId(dataId)
+    setDataFile(fileName)
+    console.log(deleteId)
+    console.log(fileName)
+  }
+
   return (
     <div className='recent-job-container' >
       {
-        data.map((data,key) => {
+        showPop ?
+          <div className='sure-container' >
+            <div className='sure-card' >
+              <h1>Are you Sure ?</h1>
+              <div className='btn-container-sure' >
+                <div className='delete-btn-sure' onClick={async () => {
+                  let imgRef = ref(storage, `job-role/${dataFile}`)
+                  await deleteDoc(doc(db, `All-Jobs-Data/${deleteId}`))
+                  setCount((c) => c + 1)
+                  deleteObject(imgRef).then(async () => {
+                    console.log("delete successfully")
+                    setShowPop(false);
+                  })
+                }}> Delete </div>
+                <button className='cancel-btn-sure' onClick={() => setShowPop(false)}>Cancel</button>
+              </div>
+            </div>
+          </div>
+          : ""
+      }
+      {
+        data.map((data, key) => {
           return (
             <div className='job-card-dashboard' key={key} >
               <div className='dashboard-job-card-image-container' >
@@ -37,17 +70,7 @@ function RecentJob() {
                 <h4>{data.title}</h4>
                 <h6>Field: <span>{data.field}</span></h6>
                 <p>{data.description}</p>
-                <button className='delete-btn-jobs'onClick={async()=>{
-                  let imgRef = ref(storage, `job-role`)
-                  await deleteDoc(doc(db, `All-Jobs-Data/${data.id}`))
-                  setCount((c)=> c + 1)
-                  deleteObject(imgRef).then(async () => {
-                    console.log("delete successfully")
-                  })
-                  await deleteDoc(doc(db, `${data.field}/`)).then((res)=>{
-                    console.log(res,"delete successfully")
-                  })
-                }} >Delete</button>
+                <button className='delete-btn-jobs' onClick={async () => handleDelete(data.id, data.fileName)} >Delete</button>
               </div>
             </div>
           )

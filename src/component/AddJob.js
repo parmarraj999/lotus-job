@@ -50,6 +50,7 @@ function AddJob(props) {
                         await addDoc(allJobRef,
                             {
                                 imgUrl: url,
+                                fileName : file.name,
                                 title: jobTitle,
                                 description: description,
                                 field: currentRole,
