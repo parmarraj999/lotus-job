@@ -66,14 +66,17 @@ function Job() {
   const [showApply, setShowApply] = useState(false);
   const [applyTitle, setApplyTitle] = useState();
   const [applyField, setApplyField] = useState();
+  const [imgUrl,setImgUrl] = useState();
 
-  const handleApply = (title, field) => {
+  const handleApply = (title, field,url) => {
     setShowApply(true)
     setApplyTitle(title)
     setApplyField(field)
+    setImgUrl(url)
   }
   console.log(applyTitle)
   console.log(applyField)
+  console.log(imgUrl)
 
 
   return (
@@ -118,7 +121,7 @@ function Job() {
                       {/* <FontAwesomeIcon icon={active ? "fa-solid fa-heart" : "fa-regular fa-heart"} /> */}
                       <FontAwesomeIcon icon={faHeart} />
                     </div>
-                    <button className="apply-btn" onClick={() => handleApply(data.title, data.field)} >Apply</button>
+                    <button className="apply-btn" onClick={() => handleApply(data.title, data.field,data.imgUrl)} >Apply</button>
                     <div className="like-btn job-btn " >
                       <FontAwesomeIcon icon={faShare} />
                     </div>
@@ -168,7 +171,7 @@ function Job() {
         showApply ? <Apply applyTitle={applyTitle} applyField={applyField} setShowApply={setShowApply} /> : ""
       } */}
       {
-        showApply ? <ApplyForm applyTitle={applyTitle} applyField={applyField} setShowApply={setShowApply} /> : ""
+        showApply ? <ApplyForm applyTitle={applyTitle} applyField={applyField} setShowApply={setShowApply} imgUrl={imgUrl} /> : ""
       }
     </div>
   )

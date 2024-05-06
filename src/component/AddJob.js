@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./forms.css"
 import { db, storage } from "../firebase/firebaseConfig"
 import { addDoc, collection } from "firebase/firestore";
@@ -13,6 +13,8 @@ function AddJob(props) {
     const [currentRole, setCurrentRole] = useState("Front-Office-Work");
     const [url, setUrl] = useState();
     const [msg, setMsg] = useState();
+
+    const [count,setCount] = useState(0)
 
     const handleTitle = (e) => {
         setJobTitle(e.target.value)
@@ -35,7 +37,6 @@ function AddJob(props) {
 
     // console.log(data)
     const handleAdd = async (e) => {
-        e.preventDefault();
         const storageRef = ref(storage, `/job-role/${file.name}`)
         const uploadTask = uploadBytesResumable(storageRef, file)
         uploadTask.on("state_changed",
@@ -75,6 +76,12 @@ function AddJob(props) {
         props.setShowAddJobForm(false)
     }
 
+    useEffect(()=>{
+        handleAdd();
+    },[count])
+
+    console.log(count)
+
     return (
         <div className='form' >
             <div className='form-card' >
@@ -83,7 +90,7 @@ function AddJob(props) {
                 </div>
                 <div className='form-inputs' >
                     <input type='text' placeholder='Job Title' onChange={handleTitle} />
-                    <textarea type='' placeholder='Job Description' onChange={handleDescription} style={{padding:".5rem"}}/>
+                    <textarea type='' placeholder='Job Description' onChange={handleDescription} style={{width:"100%",padding:".5rem", whiteSpace: 'pre-wrap', textAlign: 'center'}}/>
                     <input type='file' onChange={handleFile} />
                     <div className='field-selecter'>
                         <h4>Choose Field</h4>
@@ -100,7 +107,7 @@ function AddJob(props) {
                 </div>
                 <h4 style={{ color: "green" }} >{msg}</h4>
                 <div style={{ display: "flex", gap: "1.2rem" }}>
-                    <button className='add-job-btn' onClick={handleAdd} >Add</button>
+                    <button className='add-job-btn' onClick={(c)=>setCount(c + 1)} >Add</button>
                     <button className='cancel-btn' onClick={handleCancel} >Cancel</button>
                 </div>
             </div>

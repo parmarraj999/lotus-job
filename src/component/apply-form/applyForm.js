@@ -5,13 +5,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../../firebase/firebaseConfig';
 
-function ApplyForm({ applyTitle, applyField, setShowApply }) {
+function ApplyForm({ applyTitle, applyField, setShowApply ,imgUrl}) {
 
   const [name, setName] = useState();
   const [number, setNumber] = useState();
   const [alternateNumber, setAlternateNumber] = useState();
   const [email, setEmail] = useState();
   const [address, setAddress] = useState();
+  const [imgLink,setImgLink] = useState(imgUrl)
 
   const handleName = (e) => {
     setName(e.target.value)
@@ -43,6 +44,7 @@ function ApplyForm({ applyTitle, applyField, setShowApply }) {
     e.preventDefault();
     const applyDataRef = collection(db, "Apply-Data")
     await addDoc(applyDataRef, {
+      img_url:imgLink,
       name: name,
       number: number,
       alternateNumber: alternateNumber,

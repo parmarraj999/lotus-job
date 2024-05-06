@@ -213,6 +213,19 @@
     box-shadow: 5px 5px 20px rgba(0,0,0,0.2);
     border-radius: 15px;
 }
+.apply-card-img{
+    width: 100%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(128, 128, 128,.2);
+    border-radius: 1rem;
+}
+.apply-card-img img{
+    height: 100%;
+    border-radius: 10px;
+}
 .apply-card h1{
     font-size: 18px;
     padding-left: .2rem;

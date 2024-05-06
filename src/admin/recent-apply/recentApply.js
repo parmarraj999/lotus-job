@@ -38,6 +38,7 @@ function RecentApply() {
           <div className='sure-container' >
             <div className='sure-card' >
               <h1>Are you Sure ?</h1>
+              <p style={{color:"grey"}} >( wait few seconds after click )</p>
               <div className='btn-container-sure' >
                 <div className='delete-btn-sure' onClick={async () => {
                   await deleteDoc(doc(db, `Apply-Data/${deleteId}`))
@@ -61,6 +62,9 @@ function RecentApply() {
           data.map((data) => {
             return (
               <div className='apply-card' >
+                <div className='apply-card-img'>
+                  <img src={`${data.img_url}`} />
+                </div>
                 <h1>{data.name}</h1>
                 <h2>{data.email} </h2>
                 <div style={{ display: 'flex', justifyContent: "space-between" }} >

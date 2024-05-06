@@ -74,6 +74,11 @@
 .main-container {
     display: grid;
     grid-template-rows: 1fr 11fr;
+    /* background: url('../../../public/images/logo.jpg');
+    backdrop-filter: blur(30px);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat; */
 }
 
 .header-main-container {
@@ -81,10 +86,10 @@
     align-items: center;
     justify-content: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background: white;
 }
 
 .main-container .role-container {
-    /* border: 1px solid red; */
     height: 90vh;
     overflow-y: scroll;
     display: flex;
@@ -92,9 +97,13 @@
     align-items: center;
     padding: 3rem 0;
     gap: 5rem;
-    /* background: rgba(0, 0, 0, 0.1); */
-    background: white;
     border-radius: .9rem;
+    border: 1px solid red;
+    background: url('../../../public/images/logo-2.jpg');
+    backdrop-filter: blur(30px);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .job-card {
