@@ -13,8 +13,11 @@ function AddJob(props) {
     const [currentRole, setCurrentRole] = useState("Front-Office-Work");
     const [url, setUrl] = useState();
     const [msg, setMsg] = useState();
+    const [percent, setPercent] = useState(0);
 
-    const [count,setCount] = useState(0)
+    const [showBtn, setShowBtn] = useState(true);
+
+    const [count, setCount] = useState(0)
 
     const handleTitle = (e) => {
         setJobTitle(e.target.value)
@@ -29,15 +32,8 @@ function AddJob(props) {
         setCurrentRole(e.target.value);
     }
 
-    const data = {
-        title: jobTitle,
-        description: description,
-        file: url
-    }
-
-    // console.log(data)
     const handleAdd = async (e) => {
-        const storageRef = ref(storage, `/job-role/${file.name}`)
+        const storageRef = ref(storage, `/job-role/${file?.name}`)
         const uploadTask = uploadBytesResumable(storageRef, file)
         uploadTask.on("state_changed",
             () => {
@@ -45,29 +41,28 @@ function AddJob(props) {
                     console.log("url", url)
                     setUrl(url)
                     if (url !== null) {
-                        // const collectionRef = collection(db, `${currentRole}`)
-                        // await addDoc(collectionRef, { imgUrl: url, title: jobTitle, description: description })
                         const allJobRef = collection(db, "All-Jobs-Data")
                         await addDoc(allJobRef,
                             {
                                 imgUrl: url,
-                                fileName : file.name,
+                                fileName: file?.name,
                                 title: jobTitle,
                                 description: description,
                                 field: currentRole,
                             })
-                        console.log("added to database")
-                        setMsg("Upload Successfully")
-                        console.log('successfull')
+                            .then(() => {
+                                console.log("added to database successfully")
+                                setMsg("Upload Successfully")
+                                setPercent(100)
+                                if (percent === 100) {
+                                    props.setShowAddJobForm(false)
+                                    setShowBtn(false)
+                                }
+                            })
                     } else {
                         console.log('error')
                     }
                 })
-                if (msg === "Upload Successfully") {
-                    setTimeout(() => {
-                        props.setShowAddJobForm(false)
-                    }, 3000)
-                }
             }
         )
     }
@@ -76,11 +71,9 @@ function AddJob(props) {
         props.setShowAddJobForm(false)
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         handleAdd();
-    },[count])
-
-    console.log(count)
+    }, [count])
 
     return (
         <div className='form' >
@@ -90,7 +83,7 @@ function AddJob(props) {
                 </div>
                 <div className='form-inputs' >
                     <input type='text' placeholder='Job Title' onChange={handleTitle} />
-                    <textarea type='' placeholder='Job Description' onChange={handleDescription} style={{width:"100%",padding:".5rem", whiteSpace: 'pre-wrap', textAlign: 'center'}}/>
+                    <textarea type='' placeholder='Job Description' onChange={handleDescription} style={{ width: "100%", padding: ".5rem", whiteSpace: 'pre-wrap', textAlign: 'center' }} />
                     <input type='file' onChange={handleFile} />
                     <div className='field-selecter'>
                         <h4>Choose Field</h4>
@@ -105,10 +98,20 @@ function AddJob(props) {
                         </select>
                     </div>
                 </div>
+                <div className="upload-bar">
+                    <div className="bar" style={{ width: `${percent}%` }} ></div>
+                </div>
                 <h4 style={{ color: "green" }} >{msg}</h4>
                 <div style={{ display: "flex", gap: "1.2rem" }}>
-                    <button className='add-job-btn' onClick={(c)=>setCount(c + 1)} >Add</button>
-                    <button className='cancel-btn' onClick={handleCancel} >Cancel</button>
+                    {
+                        showBtn ?
+                            <>
+                                <button className='add-job-btn' onClick={(c) => setCount(c + 1)} >Add</button>
+                                <button className='cancel-btn' onClick={handleCancel} >Cancel</button>
+                            </>
+                            :
+                            <button className='cancel-btn' onClick={handleCancel} >Cancel</button>
+                    }
                 </div>
             </div>
         </div>

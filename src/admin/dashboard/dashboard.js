@@ -19,7 +19,7 @@ function Dashboard() {
   const [password, setPassword] = useState();
   const [error, setError] = useState()
 
-  const [hidePop, setHidePop] = useState(true);//set true before host
+  const [hidePop, setHidePop] = useState(false);//set true before host
   const [showAddJobForm, setShowAddJobForm] = useState(false);//add jobs form
   const [showForm, setShowForm] = useState(false);//add photo form
   const [showVideoForm,setShowVideoForm] = useState(false)

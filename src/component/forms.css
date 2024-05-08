@@ -24,7 +24,18 @@
     background-color: white;
     padding: 1.2rem;
 }
-
+.upload-bar{
+    width: 90%;
+    height: 10px;
+    background: black;
+    border-radius: 15px;
+}
+.bar{
+    height: 100%;
+    background: rgb(9, 255, 0);
+    border-radius: 15px;
+    transition: .4s all;
+}
 .form-card .form-inputs {
     display: flex;
     flex-direction: column;
@@ -50,7 +61,9 @@
     font-weight: 600;
     border-radius: 10px;
 }
-
+.add-job-btn:hover{
+    background: red;
+}
 .cancel-btn {
     padding: .6rem 2.5rem;
     color: rgb(0, 0, 0);
