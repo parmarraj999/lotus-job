@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import "../recent-css/recent-all.css"
-import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore'
+import { collection, deleteDoc, doc, getDocs, orderBy, query } from 'firebase/firestore'
 import { db } from '../../firebase/firebaseConfig'
 
 function RecentApply() {
@@ -13,12 +13,15 @@ function RecentApply() {
 
   const getImgData = async () => {
     const storeRef = collection(db, "Apply-Data")
+    // const q =  query(storeRef, orderBy('time',"desc"))
     const dataRef = await getDocs(storeRef)
     const allData = dataRef.docs.map(data =>
       ({ ...data.data(), id: data.id }))
     setData(allData)
     // console.log(data)
   }
+
+  console.log(new Date())
 
   useEffect(() => {
     getImgData();

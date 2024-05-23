@@ -59,7 +59,8 @@ function AddJob(props) {
                                     setShowBtn(false)
                                 }
                             })
-                    } else {
+                    }
+                     else {
                         console.log('error')
                     }
                 })
@@ -106,7 +107,7 @@ function AddJob(props) {
                     {
                         showBtn ?
                             <>
-                                <button className='add-job-btn' onClick={(c) => setCount(c + 1)} >Add</button>
+                                <button className='add-job-btn' onClick={() => setCount(count + 1)} >Add</button>
                                 <button className='cancel-btn' onClick={handleCancel} >Cancel</button>
                             </>
                             :

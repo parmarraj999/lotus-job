@@ -53,7 +53,8 @@ function ApplyForm({ applyTitle, applyField, setShowApply ,imgUrl}) {
       jobTitle: applyTitle,
       jobField: applyField,
       date: date,
-      time: currTime
+      time: currTime,
+      queryDate : new Date()
     })
       .then(() => {
         setShowApply(false)
