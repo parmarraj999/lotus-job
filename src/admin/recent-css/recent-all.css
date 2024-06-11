@@ -197,7 +197,7 @@
 .apply-container {
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 1.2rem;
   padding: 1rem;
 }
@@ -291,6 +291,105 @@
   justify-content: center;
   font-size: 18px;
   font-weight: 600;
+}
+
+.recent-apply-container .apply-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+.recent-apply-container .apply-container .apply-card2 {
+  min-width: 300px;
+  width: 300px;
+  height: 480px;
+  border-radius: 1.5rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: white;
+  gap: 1rem;
+  overflow: hidden;
+}
+.recent-apply-container .apply-container .apply-card2 .apply-img-container2 {
+  width: 100%;
+  height: 300px;
+  background: rgb(212, 212, 212);
+  border-radius: 0.8rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.recent-apply-container .apply-container .apply-card2 .apply-img-container2 img {
+  width: 300px;
+  border-radius: 0.8rem;
+}
+.recent-apply-container .apply-container .apply-card2 .apply-img-container2 h2 {
+  font-size: 20px;
+}
+.recent-apply-container .apply-container .apply-card2 .card-detail2 {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.recent-apply-container .apply-container .apply-card2 .card-detail2 h2 {
+  font-size: 20px;
+}
+.recent-apply-container .apply-container .apply-card2 .card-detail2 h4 {
+  width: 280px;
+  overflow: hidden;
+  font-size: 18px;
+  font-weight: 400;
+  color: grey;
+}
+.recent-apply-container .apply-container .apply-card2 .card-detail2 h3 {
+  font-size: 20px;
+}
+.recent-apply-container .apply-container .apply-card2 .apply-card-btn2 {
+  width: 100%;
+  display: flex;
+  gap: 0.8rem;
+}
+.recent-apply-container .apply-container .apply-card2 .apply-card-btn2 .delete-btn2 {
+  width: 100%;
+  padding: 0.7rem 0;
+  color: white;
+  background: red;
+  border-radius: 10px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.recent-apply-container .apply-container .apply-card2 .apply-card-btn2 .view-btn2 {
+  width: 100%;
+  width: 100%;
+  padding: 0.7rem 0;
+  color: rgb(0, 0, 0);
+  background: rgb(220, 220, 220);
+  border-radius: 10px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.layout-btn {
+  color: white;
+  position: absolute;
+  top: 5%;
+  right: 45%;
+  transform: translate(-50%, 0);
 }
 
 .company-job-container {
@@ -390,30 +489,37 @@
   overflow: hidden;
 }
 .sure-container .sure-card {
-  width: 40%;
-  height: auto;
-  padding: 1rem;
+  width: 350px;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 0.7rem;
   background-color: white;
-  border-radius: 2rem;
+  border-radius: 1.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 1.2rem;
 }
-.sure-container .sure-card h1 {
-  font-size: 24px;
+.sure-container .sure-card img {
+  width: 100%;
+  border-radius: 1rem;
+}
+.sure-container .sure-card p {
+  font-size: 18px;
+  font-weight: 600;
 }
 .sure-container .sure-card .btn-container-sure {
   display: flex;
   align-items: center;
   gap: 1rem;
+  width: 100%;
 }
 .sure-container .sure-card .btn-container-sure .delete-btn-sure {
   width: 100%;
   padding: 0.7rem 2rem;
   color: white;
-  background: red;
+  background: rgb(255, 121, 121);
   border-radius: 10px;
   border: none;
   display: flex;
@@ -422,12 +528,16 @@
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
+  transition: 0.3s all;
+}
+.sure-container .sure-card .btn-container-sure .delete-btn-sure:hover {
+  background: red;
 }
 .sure-container .sure-card .btn-container-sure .cancel-btn-sure {
   width: 100%;
   padding: 0.7rem 2rem;
   color: black;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(107, 107, 107, 0.2);
   border-radius: 10px;
   border: none;
   display: flex;

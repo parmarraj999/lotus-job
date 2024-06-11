@@ -43,7 +43,8 @@ function RecentJob() {
         showPop ?
           <div className='sure-container' >
             <div className='sure-card' >
-              <h1>Are you Sure ?</h1>
+            <img src='../../../../images/delete-img.png' />
+              <p>Are you sure you want to Delete ?</p>
               <div className='btn-container-sure' >
                 <div className='delete-btn-sure' onClick={async () => {
                   setShowPop(false);

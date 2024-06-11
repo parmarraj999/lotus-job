@@ -47,7 +47,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
+    gap: .5rem;
 }
 
 .menu-container ul .menu-item {

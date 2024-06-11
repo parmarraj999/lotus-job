@@ -12,6 +12,10 @@ import RecentPhoto from './admin/recent-photo/recentPhoto';
 import RecentUpload from './admin/recent-upload/recentUpload';
 import Dashboard from './admin/dashboard/dashboard';
 import RecentVideo from './admin/recent-video/RecentVideo';
+import { ScrollTrigger } from "gsap/all"
+import gsap from 'gsap';
+
+gsap.registerPlugin(ScrollTrigger)
 
 function App() {
   return (

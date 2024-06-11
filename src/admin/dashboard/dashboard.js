@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import "./dashboard.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft, faArrowRight, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { Outlet } from 'react-router'
 import { Link, NavLink } from 'react-router-dom'
 import AddJob from '../../component/AddJob'
 import Upload from '../../function/upload/upload'
 import VideoUpload from '../../function/upload/VideoUpload'
+import gsap from 'gsap'
 
 function Dashboard() {
 
@@ -19,10 +20,10 @@ function Dashboard() {
   const [password, setPassword] = useState();
   const [error, setError] = useState()
 
-  const [hidePop, setHidePop] = useState(true);//set true before deploy
+  const [hidePop, setHidePop] = useState(false);//set true before deploy
   const [showAddJobForm, setShowAddJobForm] = useState(false);//add jobs form
   const [showForm, setShowForm] = useState(false);//add photo form
-  const [showVideoForm,setShowVideoForm] = useState(false)
+  const [showVideoForm, setShowVideoForm] = useState(false)
 
   const handleUsername = (e) => {
     setUsername(e.target.value)
@@ -42,6 +43,60 @@ function Dashboard() {
   }
 
   const [showBtn, setShowBtn] = useState("job-btn")
+  const [mini, setMini] = useState("")
+
+  const tl = gsap.timeline();
+
+  const handleMinimize = () => {
+    setMini("minimize")
+    // gsap.to(".side-nav", {
+    //   width: "0%",
+    //   padding: "0",
+    //   height: "80px",
+    //   delay:1
+    // })
+    gsap.to(".main-block", {
+      width: "100%"
+    })
+    // gsap.to(".side-logo > img", {
+    //   width: "80px",
+    //   height: "80px"
+    // })
+    gsap.to(".navlink-sidenav",{
+      y:-20,
+      opacity:0,
+      duration:.3,
+      stagger:.1
+    })
+    tl.to(".side-nav",{
+      height:0,
+      padding:0,
+      delay:1,
+      duration:.6
+    })
+    tl.to(".side-nav",{
+      width:0,
+    })
+  }
+
+  const handleMaximize = () => {
+    setMini("")
+    tl.to(".side-nav",{
+      width:"20%",
+    })
+    tl.to(".side-nav",{
+      height:"100%",
+      padding:"1rem",
+      duration:.6
+    })
+    gsap.to(".navlink-sidenav",{
+      y:0,
+      opacity:1,
+      delay:1,
+      duration:.3,
+      stagger:.1
+    })
+  }
 
   return (
     <>
@@ -62,20 +117,20 @@ function Dashboard() {
           :
           <div className='dashboard-container-two' >
             <div className='side-nav' >
-              <div className='side-logo'>
+              <div className='side-logo' onClick={handleMinimize}>
                 <img src='../../../images/logo.jpg' />
               </div>
               <ul>
-                <NavLink className="navlink-sidenav" to='recent-job'  onClick={()=>setShowBtn("job-btn")}>Recent Job</NavLink>
-                <NavLink className="navlink-sidenav" to='recent-apply'  onClick={()=>setShowBtn("")}>Recent apply</NavLink>
-                <NavLink className="navlink-sidenav" to='recent-photo'  onClick={()=>setShowBtn("photo-btn")}>Recent photo</NavLink>
-                <NavLink className="navlink-sidenav" to='recent-video' onClick={()=>setShowBtn("video-btn")}>Recent Video</NavLink>
-                <NavLink className="navlink-sidenav" to='recent-uploads' onClick={()=>setShowBtn("")}>Recent upload</NavLink>
+                <NavLink className="navlink-sidenav" to='recent-job' onClick={() => setShowBtn("job-btn")}>Recent Job</NavLink>
+                <NavLink className="navlink-sidenav" to='recent-apply' onClick={() => setShowBtn("")}>Recent apply</NavLink>
+                <NavLink className="navlink-sidenav" to='recent-photo' onClick={() => setShowBtn("photo-btn")}>Recent photo</NavLink>
+                <NavLink className="navlink-sidenav" to='recent-video' onClick={() => setShowBtn("video-btn")}>Recent Video</NavLink>
+                <NavLink className="navlink-sidenav" to='recent-uploads' onClick={() => setShowBtn("")}>Recent upload</NavLink>
               </ul>
             </div>
             <div className='main-block' >
               <div className='main-header' >
-                <h2>Welcome back, Team</h2>
+                <h2>Lotus Dashboard</h2>
                 <div className='header-btn' >
                   {
                     showBtn === "job-btn" ?
@@ -93,7 +148,7 @@ function Dashboard() {
                   }
                   {
                     showBtn === "photo-btn" ?
-                      <button className='add-photo-button' onClick={()=> setShowForm(true)}> Add Photo</button>
+                      <button className='add-photo-button' onClick={() => setShowForm(true)}> Add Photo</button>
                       : ""
                   }
                   <div className='exit-icon' >
@@ -117,10 +172,20 @@ function Dashboard() {
             }
             {/* // video upload form  */}
             {
-              showVideoForm ? <VideoUpload setShowVideoForm={setShowVideoForm}/> : ""
+              showVideoForm ? <VideoUpload setShowVideoForm={setShowVideoForm} /> : ""
+            }
+            {
+              mini === "minimize" ?
+            <button className='minimize-btn' onClick={handleMaximize}>
+              <FontAwesomeIcon icon={faArrowRight}/>
+            </button> : 
+            <button className='minimize-btn' onClick={handleMinimize}>
+            <FontAwesomeIcon icon={faArrowLeft}/>
+          </button>
             }
           </div>
       }
+
     </>
   )
 }
