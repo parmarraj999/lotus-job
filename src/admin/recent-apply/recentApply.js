@@ -36,8 +36,8 @@ function RecentApply() {
     console.log(deleteId)
   }
 
-  const [layout, setLayout] = useState(true)
-  const [showSide,setShowSide] = useState(true)
+  const [layout, setLayout] = useState(false)
+  const [showSide,setShowSide] = useState(false)
   const [showData,setShowData] = useState()
 
   const handleDetail = (data) => {
@@ -71,7 +71,7 @@ function RecentApply() {
           : ""
       }
       {
-        showSide ? <Sidebar data={showData} setShowSide={setShowSide} /> : ""
+        showSide ? <Sidebar setCount={setCount} data={showData} setShowSide={setShowSide} /> : ""
       }
        <div className='layout-btn' onClick={()=>setLayout(!layout)} >
         {
